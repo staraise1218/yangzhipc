@@ -1,0 +1,105 @@
+/*中间主要内容*/
+.index_flex{
+	display: flex;
+	justify-content: space-between;
+}
+
+.index_position{
+	position: relative;
+}
+
+.index_title_l{
+	font-size: 16px;
+	border-left: 4px solid rgb(11,78,161);
+	padding-left: 4px;
+	color:rgba(61,61,61,1);
+}
+
+.index_title_r{
+	color:rgba(153,153,153,1);
+}
+
+.index_img{
+	margin-left: 2px;
+	position: relative;
+	top: -2px;
+}
+
+.index_l{
+	width: 49%;
+}
+
+.index_content{
+	margin: 15px 0 30px 0;
+}
+
+
+.index_content_title{
+	font-size:16px;
+	color:rgba(61,61,61,1);
+	/*两行溢出隐藏*/
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.index_content_div{
+	margin-top: 10px;
+	/*三行溢出隐藏*/
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.index_content_date{
+	position: absolute;
+	bottom: 0;
+}
+
+.index_small{
+	font-size:12px;
+	color:rgba(153,153,153,1);
+}
+
+/*文章列表*/
+.index_content_ul {
+	margin-top: 20px;
+}
+
+.index_content_ul li{
+	width: 100%;
+	padding-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	align-items: center;
+
+}
+
+.index_content_ul li a{
+	font-size: 14px;
+	color:rgba(61,61,61,1);
+	display: inline-block;
+	max-width: 350px;
+}
+
+.index_content_ul li span{
+	text-align: right;
+	width: 90px;
+}
+
+/*右边*/
+.index_r{
+	width: 49%;
+}
+
+.index_content_start{
+	position: absolute;
+	left: 41%;
+    top: 35%;
+    width: 80px;
+}
