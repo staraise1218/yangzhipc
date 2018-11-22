@@ -1,0 +1,149 @@
+/*行业会展*/
+.resource_ul{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.resource_ul li{
+	width: 50%;
+	padding: 0 15px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+}
+
+.resource_l{
+	width: 68px;
+	margin-right: 20px;
+}
+
+.resource_l_big{
+	font-size: 24px;
+	color: rgba(61,61,61,1);
+}
+
+.resource_l_small{
+	margin-top: 6px;
+	font-size: 16px;
+	color: rgba(179,179,179,1);
+}
+
+.resource_r{
+	width: calc(100% - 88px)
+}
+
+.resource_r_title{
+	margin-bottom: 10px;
+	display: block;
+	font-size: 16px;
+	color: rgba(61,61,61,1);
+}
+
+.resource_r_word{
+	font-size: 14px;
+	color: rgba(112,112,112,1);
+}
+
+.resource_ul li:hover .resource_r_title{
+	text-decoration:underline;
+	color:rgba(11,78,161,1);
+}
+
+.resource_ul li:hover .resource_r_word{
+	color:rgba(77,77,77,1);
+}
+
+/*重要连接*/
+.link_title{
+	margin-bottom: 10px;
+	padding-left: 6px;
+	border-left: 4px solid rgba(11,78,161,1); 
+	font-size:16px;
+	color:rgba(61,61,61,1);
+}
+
+.link_word{
+	margin-bottom: 30px;
+	font-size:14px;
+	color:rgba(77,77,77,1);
+	line-height:20px;
+}
+
+/*工作机会*/
+.work{
+	padding: 20px 23% 10px 23%;
+}
+
+.work_ul{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.work_ul li{
+	width: 29.3%;
+	padding: 15px 20px;
+	margin: 0 2% 30px 2%;
+	border: 1px solid rgba(230,230,230,1);
+}
+
+.work_ul_title{
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(230,230,230,1);
+	font-size:16px;
+	font-weight:bold;
+	color:rgba(62,62,62,1);
+}
+
+.work_ul_flex{
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.work_ul_name{
+	font-size:14px;
+	color:rgba(61,61,61,1);
+}
+
+.work_ul_word{
+	font-size:14px;
+	font-weight:bold;
+	color:rgba(61,61,61,1);
+}
+
+.work_ul_btn{
+	margin-top: 20px;
+}
+
+.work_ul_btn button{
+	width:80px;
+	height:36px;
+	border-radius: 4px;
+}
+
+.work_ul li:hover{
+	border:1px solid rgba(11,78,161,1);
+}
+
+.work_ul li:hover .work_ul_title{
+	color:rgba(11,78,161,1);
+}
+
+/*人才招聘*/
+.recruit_title{
+	margin-bottom: 20px;
+	font-size:16px;
+	font-weight:bold;
+	color:rgba(77,77,77,1);
+}
+
+.recruit_ul{
+	padding: 0;
+	margin-bottom: 40px;
+}
+
+.recruit_ul li{
+	margin-bottom: 20px;
+	display: flex;
+}

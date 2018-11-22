@@ -1,0 +1,66 @@
+.study_img{
+	margin-top: -20px;
+	border-bottom: 1px solid rgba(230,230,230,1);
+}
+
+.study_img img{
+	width: 100%;
+	height: auto;
+	margin-bottom: 30px;
+}
+
+.study_title{
+	padding: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.study_name{
+	margin-right: 20px;
+	font-size:16px;
+	font-weight:bold;
+	color:rgba(77,77,77,1);
+}
+
+.study_input{
+	width: 200px;
+    height: 40px;
+    padding: 0 10px;
+    margin-right: 40px;
+    border: 1px solid rgba(219,219,219,1);
+    font-size: 14px;
+    color: rgba(179,179,179,1);
+}
+
+.study_title_r{
+	font-size:14px;
+	color:rgba(153,153,153,1);
+}
+
+/*主要内容*/
+.study_ul{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.study_ul li{
+	width: 33.3%;
+	padding: 0 10px;
+	/*position: relative;*/
+	text-align: center;
+}
+
+.study_ul_img{
+	width: 100%;
+}
+
+.study_ul_start{
+	position: relative;
+	top: -110px;
+}
+
+.study_ul_p{
+	margin-top: -40px;
+	margin-bottom: 30px;
+}

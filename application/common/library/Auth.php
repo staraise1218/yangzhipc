@@ -131,7 +131,7 @@ class Auth
      * @param array $extend    扩展参数
      * @return boolean
      */
-    public function register($username, $password, $email = '', $mobile = '', $extend = [])
+    /*public function register($username, $password, $email = '', $mobile = '', $extend = [])
     {
         // 检测用户名或邮箱、手机号是否存在
         if (User::getByUsername($username))
@@ -174,6 +174,80 @@ class Auth
         ]);
         $params['password'] = $this->getEncryptPassword($password, $params['salt']);
         $params = array_merge($params, $extend);
+
+        ////////////////同步到Ucenter////////////////
+        if (defined('UC_STATUS') && UC_STATUS)
+        {
+            $uc = new \addons\ucenter\library\client\Client();
+            $user_id = $uc->uc_user_register($username, $password, $email);
+            // 如果小于0则说明发生错误
+            if ($user_id <= 0)
+            {
+                $this->setError($user_id > -4 ? 'Username is incorrect' : 'Email is incorrect');
+                return FALSE;
+            }
+            else
+            {
+                $params['id'] = $user_id;
+            }
+        }
+
+        //账号注册时需要开启事务,避免出现垃圾数据
+        Db::startTrans();
+        try
+        {
+            $user = User::create($params);
+            Db::commit();
+
+            // 此时的Model中只包含部分数据
+            $this->_user = User::get($user->id);
+
+            //设置Token
+            $this->_token = Random::uuid();
+            Token::set($this->_token, $user->id, $this->keeptime);
+
+            //注册成功的事件
+            Hook::listen("user_register_successed", $this->_user);
+
+            return TRUE;
+        }
+        catch (Exception $e)
+        {
+            $this->setError($e->getMessage());
+            Db::rollback();
+            return FALSE;
+        }
+    }*/
+
+    public function register($mobile, $password)
+    {
+        if ($mobile && User::getByMobile($mobile))
+        {
+            $this->setError('Mobile already exist');
+            return FALSE;
+        }
+
+        $ip = request()->ip();
+        $time = time();
+
+        $data = [
+            'password' => $password,
+            'mobile'   => $mobile,
+            'level'    => 1,
+            'score'    => 0,
+            'avatar'   => '',
+        ];
+        $params = array_merge($data, [
+            'salt'      => Random::alnum(),
+            'jointime'  => $time,
+            'joinip'    => $ip,
+            'logintime' => $time,
+            'loginip'   => $ip,
+            'prevtime'  => $time,
+            'status'    => 'normal'
+        ]);
+        $params['password'] = $this->getEncryptPassword($password, $params['salt']);
+        // $params = array_merge($params, $extend);
 
         ////////////////同步到Ucenter////////////////
         if (defined('UC_STATUS') && UC_STATUS)

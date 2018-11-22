@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>养殖平台官网-全部推荐</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/forget.css">
+	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+
+</head>
+<body>
+	<!-- 顶部菜单 -->
+	{include file="common/header"}
+	<!-- 中间主要内容 -->
+	<div class="main-content">
+		<div class="main-con-wrap">
+			<ul class="main-con-rub">
+			    <li><a href="#">会员中心</a></li>
+			    <li class=""><a href="#">忘记密码</a></li>
+			</ul>
+			<div class="forget">
+				<h5>忘记密码</h5>
+				<form id="registerform" method="POST">
+					<div class="in-item">
+						<span>手机</span>
+						<input type="text" name="mobile" id="mobile" placeholder="请输入手机号">
+					</div>
+					<div class="in-item">
+						<span>验证码</span>
+						<div class="in-item-cap">
+							<input type="text" name="code" id="code" placeholder="请输入验证码" class="in-item-cap-inp">
+							<span>获取验证码</span>
+						</div>
+					</div>
+					<div class="in-item">
+						<span>密码</span>
+						<input type="text" name="password" id="password" placeholder="请输入密码">
+					</div>
+					<div class="in-item">
+						<span>新密码</span>
+						<input type="text" name="newpassword" id="newpassword" placeholder="请输入新密码">
+					</div>
+					<button type="button" onclick="check_submit()">确定</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- 底部 -->
+	{include file="common/footer"}
+<script type="text/javascript" src="/statics/layer/layer.js"></script>
+<script type="text/javascript">
+	function check_submit(){
+        var mobile = $.trim($('#mobile').val());
+        var password = $.trim($('#password').val());
+        var newpassword = $.trim($('#newpassword').val());
+        var code = $.trim($('#code').val());
+
+        if(mobile == ''){
+            showErrorMsg('手机号不能为空!');
+            return false;
+        }
+        if(!checkMobile(mobile)){
+            showErrorMsg('手机号格式不正确!');
+            return false;
+        }
+        if(code == ''){
+            showErrorMsg('验证码不能为空!');
+            return false;
+        }
+        if(password == ''){
+            showErrorMsg('密码不能为空!');
+            return false;
+        }
+        if(newpassword == ''){
+            showErrorMsg('新密码不能为空！');
+            return false;
+        }
+        if(newpassword != password){
+            showErrorMsg('两次密码不一致！');
+            return false;
+        }
+
+        $.ajax({
+            type : "POST",
+            url:"{:url('api/user/resetpwd')}",
+            dataType: "json",
+            data: $('#registerform').serialize(),
+            success: function(data){
+                if(data.code == 1){
+                    layer.msg(data.msg, {icon: 1},function(){
+                        window.location.href = "{:url('index/user/login')}";
+                    });
+                }else{
+                    layer.alert(data.msg, {icon: 2},function(index){
+                        layer.close(index);
+                    });
+                }
+            }
+        });
+
+    }
+
+    function checkMobile(tel) {
+        //var reg = /(^1[3|4|5|7|8][0-9]{9}$)/;
+        var reg = /^1[0-9]{10}$/;
+        if (reg.test(tel)) {
+            return true;
+        }else{
+            return false;
+        };
+    }
+
+    function showErrorMsg(msg){
+        layer.msg(msg, {icon: 2});
+    }
+
+    $('#count_down').removeAttr("disabled");
+    //倒计时函数
+    function jsInnerTimeout(id,intAs)
+    {
+        var codeObj=$("#"+id);
+        //var intAs = parseInt(codeObj.attr("IntervalTime"));
+
+        intAs--;
+        if(intAs<=-1)
+        {
+            codeObj.removeAttr("disabled");
+        // codeObj.attr("IntervalTime",60);
+            codeObj.text("发送");
+            return true;
+        }
+
+        codeObj.text(intAs+'秒');
+        //  codeObj.attr("IntervalTime",intAs);
+
+        setTimeout("jsInnerTimeout('"+id+"',"+intAs+")",1000);
+    };
+</script>
+</body>
+</html>

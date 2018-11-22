@@ -66,6 +66,10 @@ class Controller
                 $this->beforeAction($method, $options);
             }
         }
+
+        define('MODULE_NAME',$this->request->module());  // 当前模块名称是
+        define('CONTROLLER_NAME',$this->request->controller()); // 当前控制器名称
+        define('ACTION_NAME',$this->request->action()); // 当前操作名称是
     }
 
     /**

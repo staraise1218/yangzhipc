@@ -15,8 +15,8 @@ use think\Validate;
 class User extends Frontend
 {
 
-    protected $layout = 'default';
-    protected $noNeedLogin = ['login', 'register', 'third'];
+    protected $layout = '';
+    protected $noNeedLogin = ['login', 'register', 'third', 'forgetpwd'];
     protected $noNeedRight = ['*'];
 
     public function _initialize()
@@ -85,37 +85,26 @@ class User extends Frontend
         if ($this->auth->id)
             $this->success(__('You\'ve logged in, do not login again'), $url);
         if ($this->request->isPost()) {
-            $username = $this->request->post('username');
+            $mobile = $this->request->post('mobile');
             $password = $this->request->post('password');
-            $email = $this->request->post('email');
-            $mobile = $this->request->post('mobile', '');
-            $captcha = $this->request->post('captcha');
+            $password_confirm = $this->request->post('password_confirm');
             $token = $this->request->post('__token__');
             $rule = [
-                'username'  => 'require|length:3,30',
+                'mobile'  => 'require|regex:/^1\d{10}$/',
                 'password'  => 'require|length:6,30',
-                'email'     => 'require|email',
-                'mobile'    => 'regex:/^1\d{10}$/',
-                'captcha'   => 'require|captcha',
-                '__token__' => 'token',
+                'password_confirm' => 'confirm:password',
+                // '__token__' => 'token',
             ];
 
             $msg = [
-                'username.require' => 'Username can not be empty',
-                'username.length'  => 'Username must be 3 to 30 characters',
+                'mobile'           => 'Mobile is incorrect',
                 'password.require' => 'Password can not be empty',
                 'password.length'  => 'Password must be 6 to 30 characters',
-                'captcha.require'  => 'Captcha can not be empty',
-                'captcha.captcha'  => 'Captcha is incorrect',
-                'email'            => 'Email is incorrect',
-                'mobile'           => 'Mobile is incorrect',
             ];
             $data = [
-                'username'  => $username,
-                'password'  => $password,
-                'email'     => $email,
                 'mobile'    => $mobile,
-                'captcha'   => $captcha,
+                'password'  => $password,
+                'password_confirm'  => $password_confirm,
                 '__token__' => $token,
             ];
             $validate = new Validate($rule, $msg);
@@ -123,7 +112,7 @@ class User extends Frontend
             if (!$result) {
                 $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
             }
-            if ($this->auth->register($username, $password, $email, $mobile)) {
+            if ($this->auth->register($mobile, $password)) {
                 $synchtml = '';
                 ////////////////同步到Ucenter////////////////
                 if (defined('UC_STATUS') && UC_STATUS) {
@@ -155,19 +144,19 @@ class User extends Frontend
         if ($this->auth->id)
             $this->success(__('You\'ve logged in, do not login again'), $url);
         if ($this->request->isPost()) {
+
             $account = $this->request->post('account');
             $password = $this->request->post('password');
             $keeplogin = (int)$this->request->post('keeplogin');
             $token = $this->request->post('__token__');
             $rule = [
-                'account'   => 'require|length:3,50',
+                // 'account'   => 'require|length:3,50',
                 'password'  => 'require|length:6,30',
-                '__token__' => 'token',
+                // '__token__' => 'token',
             ];
 
             $msg = [
-                'account.require'  => 'Account can not be empty',
-                'account.length'   => 'Account must be 3 to 50 characters',
+                'account.require'  => '手机号必填',
                 'password.require' => 'Password can not be empty',
                 'password.length'  => 'Password must be 6 to 30 characters',
             ];
@@ -201,7 +190,6 @@ class User extends Frontend
             $url = $referer;
         }
         $this->view->assign('url', $url);
-        $this->view->assign('title', __('Login'));
         return $this->view->fetch();
     }
 
@@ -281,6 +269,10 @@ class User extends Frontend
             }
         }
         $this->view->assign('title', __('Change password'));
+        return $this->view->fetch();
+    }
+
+    public function forgetpwd(){
         return $this->view->fetch();
     }
 

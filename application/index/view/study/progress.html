@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>专业培训</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/index_detail.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/project.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/study_progress.css">
+	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+
+</head>
+<body>
+	<!-- 顶部菜单 -->
+	{include file="common/header"}
+	<!-- 面包屑导航 -->
+	<ul class="bread breadcrumb">
+	    <li><a href="#">学习中心</a></li>
+	    <li class="active"><a href="javascript:;">研究进展</a></li>
+	</ul>
+	<!-- 中间主要内容 -->
+	<div class="study_progress main">
+		<div class="detail_img ac"><img src="/statics/images/img/img_1020_400.png"></div>
+		<div class="study_pro_flex">
+			<div class="study_pro_l">研究进展</div>
+			<a href="{:url('index/study/progressAll')}" class="study_pro_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
+		</div>
+		<ul class="study_ul">
+			{foreach name="list" item="item"}
+			<li>
+				<div class="study_ul_l">
+					<div class="study_ul_deta project_item_l">
+						<div class="project_big">{:date('d', $item.createtime)}</div>
+						<div class="project_small">{:date('Y-m', $item.createtime)}</div>
+					</div>
+					<p><a href="{:url('index/study/progressDetail', array('id'=>$item.id))}">{$item.title}</a></p>
+				</div>
+				<div class="study_ul_r">
+					<img src="/statics/images/icons/yinhao1.png">
+					<p><a href="{:url('index/study/progressDetail', array('id'=>$item.id))}">{$item.description}</a></p>
+					<img src="/statics/images/icons/yinhao2.png">
+				</div>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+
+	<!-- 底部 -->
+	{include file="common/footer"}
+</body>
+</html>

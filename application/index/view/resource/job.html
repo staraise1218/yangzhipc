@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>资源中心-工作机会</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/index_detail.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/resource.css">
+	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+
+</head>
+<body>
+	<!-- 顶部菜单 -->
+	{include file="common/header"}
+	<!-- 面包屑导航 -->
+	<ul class="bread breadcrumb">
+	    <li><a href="#">资源中心</a></li>
+	    <li class="active"><a href="#">工作机会</a></li>
+	</ul>
+	<!-- 中间主要内容 -->
+	<div class="work main">
+		<div class="detail_img ac"><img src="/statics/images/img/img_1020_400.png"></div>
+		<h3 class="more_title">工作机会</h3>
+		<ul class="work_ul">
+			{foreach name="list" item="item"}
+			<li>
+				<div class="work_ul_title"><img src="/statics/images/icons/icon.png">{$item.title}</div>
+				<div class="work_ul_flex">
+					<div class="work_ul_name">工作经验</div>
+					<div class="work_ul_word">{$item.experience}</div>
+				</div>
+				<div class="work_ul_flex">
+					<div class="work_ul_name">工资待遇</div>
+					<div class="work_ul_word">{$item.salary}</div>
+				</div>
+				<div class="work_ul_flex">
+					<div class="work_ul_name">公司名称</div>
+					<div class="work_ul_word">{$item.company_name}</div>
+				</div>
+				<div class="work_ul_btn ac"><button class="common_btn" onclick="javascript:window.location='{:url('index/resource/jobDetail', array('id'=>$item.id))}'">查看</button></div>
+			</li>
+			{/foreach}
+		</ul>
+		<div id="paginate">{$list->render()}</div>
+	</div>
+
+	<!-- 底部 -->
+	{include file="common/footer"}
+</body>
+</html>

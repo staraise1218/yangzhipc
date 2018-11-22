@@ -1,0 +1,47 @@
+.personal{
+	/*height:160px;*/
+	background:rgba(245,245,245,1);
+	padding: 20px 23%;
+}
+
+.personal_bread{
+	margin-bottom: 10px;
+}
+
+.personal_flex{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.personal_img{
+	width:70px;
+	height:70px;
+	border-radius:50%;
+}
+
+.personal_name{
+	margin-left: 15px;
+	font-size:22px;
+	font-weight:bold;
+	color:rgba(11,78,161,1);
+}
+
+.personal_qita_name{
+	margin-left: 30px;
+	font-size:16px;
+	color:#666666;
+}
+
+.personal_qita_word{
+	font-size:18px;
+	color:#3D3D3D;
+	font-weight: bold;
+}
+
+.personal_btn button{
+	width:60px;
+	height:36px;
+	background:rgba(11,78,161,1);
+	border-radius:4px;
+}

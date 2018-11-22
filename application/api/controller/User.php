@@ -294,14 +294,19 @@ class User extends Api
      */
     public function resetpwd()
     {
-        $type = $this->request->request("type");
+        $type = 'mobile'; //$this->request->request("type");
         $mobile = $this->request->request("mobile");
         $email = $this->request->request("email");
+        $password = $this->request->request("password");
         $newpassword = $this->request->request("newpassword");
-        $captcha = $this->request->request("captcha");
-        if (!$newpassword || !$captcha)
+        $code = $this->request->request("code");
+        if (!$newpassword || !$code)
         {
             $this->error(__('Invalid parameters'));
+        }        
+        if ($newpassword != $password)
+        {
+            $this->error('两次密码不一致');
         }
         if ($type == 'mobile')
         {
@@ -312,13 +317,13 @@ class User extends Api
             $user = \app\common\model\User::getByMobile($mobile);
             if (!$user)
             {
-                $this->error(__('User not found'));
+                $this->error(__('手机号未注册！'));
             }
-            $ret = Sms::check($mobile, $captcha, 'resetpwd');
-            if (!$ret)
-            {
-                $this->error(__('Captcha is incorrect'));
-            }
+            // $ret = Sms::check($mobile, $code, 'resetpwd');
+            // if (!$ret)
+            // {
+            //     $this->error(__('Captcha is incorrect'));
+            // }
             Sms::flush($mobile, 'resetpwd');
         }
         else

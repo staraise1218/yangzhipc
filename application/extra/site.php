@@ -15,10 +15,9 @@ return array (
   'fixedpage' => 'dashboard',
   'categorytype' => 
   array (
-    'default' => 'Default',
-    'page' => 'Page',
-    'article' => 'Article',
-    'test' => 'Test',
+    'industry_knowledge' => '行业知识',
+    'video_type' => '视频分类',
+    'data_type' => '资料分类',
   ),
   'configgroup' => 
   array (
@@ -36,5 +35,5 @@ return array (
   'mail_smtp_pass' => 'password',
   'mail_verify_type' => '2',
   'mail_from' => '10000@qq.com',
-  'index_video' => '',
+  'index_video' => '/uploads/20181117/65bca19b15a1275a102852ea9f256005.mp4',
 );

@@ -1,0 +1,81 @@
+.study_progress{
+	padding: 20px 23% 10px 23%;
+}
+
+.study_pro_flex{
+	padding-bottom: 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+}
+
+.study_pro_l{
+	font-size:18px;
+	font-weight:bold;
+	color:rgba(61,61,61,1);
+}
+
+.study_ul li{
+	padding: 30px 0 30px 34px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid rgba(230,230,230,1);
+}
+
+.study_ul_l{
+	width:180px;
+	height:90px;
+	margin-right: 20px;
+	position: relative;
+	border:1px solid rgba(230,230,230,1);
+}
+
+.study_ul_l p{
+	line-height: 90px;
+	text-align: center;
+	font-size:18px;
+	font-weight:bold;
+	color:rgba(61,61,61,1);
+}
+
+.study_ul_deta{
+	position: absolute;
+	top: -1px;
+	left: -34px;
+}
+
+.study_ul_r{
+	width: calc(100% - 200px);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.study_ul_r p{
+	padding: 0 20px;
+	font-size:14px;
+	color:rgba(102,102,102,1);
+	line-height:20px;
+}
+
+.study_ul li:hover .project_item_l{
+	background: rgba(11,78,161,1);
+}
+
+.study_ul li:hover .project_big , .study_ul li:hover .project_small {
+	color: #fff;
+}
+
+.study_ul li:hover .study_ul_r p{
+	color:rgba(77,77,77,1);
+}
+
+.study_ul li:hover .study_ul_l{
+	border: 1px solid rgba(11,78,161,1);
+}
+
+.study_ul li:hover .study_ul_l p{
+	color: rgba(11,78,161,1);
+}

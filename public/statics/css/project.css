@@ -85,3 +85,10 @@
 	color:rgba(77,77,77,1);
 	line-height:20px;
 }
+
+/*知识行情*/
+.study_title_l{
+	font-size:18px;
+	font-weight:bold;
+	color:rgba(62,62,62,1);
+}

@@ -1,0 +1,31 @@
+.enroll_ul{
+	padding-left: 20%;
+}
+
+.enroll_ul li{
+	margin-bottom: 30px;
+	font-size:16px;
+}
+
+.enroll_ul_name{
+	width: 160px;
+	display: inline-block;
+	color:rgba(77,77,77,1);
+}
+
+.enroll_ul_content{
+	color:rgba(61,61,61,1);
+}
+
+.enroll_ul_input{
+	width:300px;
+	height:44px;
+	padding: 0 15px;
+	border:1px solid rgba(219,219,219,1);
+	font-size:12px;
+	color:rgba(179,179,179,1);
+}
+
+.enroll_btn{
+	margin-bottom: 20px;
+}

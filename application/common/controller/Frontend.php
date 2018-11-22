@@ -109,6 +109,8 @@ class Frontend extends Controller
 
         // 配置信息后
         Hook::listen("config_init", $config);
+        // 判断用户是否登录
+        $this->assign('isLogin', $this->auth->isLogin());
         // 加载当前控制器语言包
         $this->loadlang($controllername);
         $this->assign('site', $site);

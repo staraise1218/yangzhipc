@@ -132,3 +132,14 @@ footer p{
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
+/*按钮*/
+.common_btn{
+	width:110px;
+	height:44px;
+	background:rgba(11,78,161,1);
+	font-size:14px;
+	color:#fff;
+	border: none;
+	outline: none;
+}

@@ -29,8 +29,16 @@
 	width: 49%;
 }
 
+.index_position .index_l img{
+	width: 100%;
+}
+
 .index_content{
 	margin: 15px 0 30px 0;
+}
+
+.index_content img:first-child{
+	width: 100%;
 }
 
 

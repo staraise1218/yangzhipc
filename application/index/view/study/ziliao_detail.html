@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>项目介绍</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/index_detail.css">
+	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+
+</head>
+<body>
+	<!-- 顶部菜单 -->
+	{include file="common/header"}
+	<!-- 面包屑导航 -->
+	<ul class="bread breadcrumb">
+	    <li><a href="#">学习中心</a></li>
+	    <li><a href="#">培训视频</a></li>
+	    <li class="active"><a href="#">视频详情</a></li>
+	</ul>
+	<!-- 中间主要内容 -->
+	<div class="main">
+		<div class="intor_title">
+			<div>
+				<div class="intor_big">{$info.title}</div>
+				<div class="intor_date">{:date('Y-m-d', $info.createtime)}</div>
+			</div>
+			<div><button class="common_btn">购买</button></div>
+		</div>
+
+		<div class="intor_word detail_word">{$info.content}</div>
+
+		<!-- <h3 class="more_title">付款说明</h3>
+
+		<div class="detail_img ac">
+			<div class="study_img"></div>
+			<p class="study_img_p ac">付款说明</p>
+		</div> -->
+
+	</div>
+
+	<!-- 底部 -->
+	{include file="common/footer"}
+</body>
+</html>
