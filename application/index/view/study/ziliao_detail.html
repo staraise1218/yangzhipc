@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>项目介绍</title>
+	<title>学习资料详情</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,8 +18,8 @@
 	<!-- 面包屑导航 -->
 	<ul class="bread breadcrumb">
 	    <li><a href="#">学习中心</a></li>
-	    <li><a href="#">培训视频</a></li>
-	    <li class="active"><a href="#">视频详情</a></li>
+	    <li><a href="#">学习资料</a></li>
+	    <li class="active"><a href="#">资料详情</a></li>
 	</ul>
 	<!-- 中间主要内容 -->
 	<div class="main">
@@ -28,9 +28,14 @@
 				<div class="intor_big">{$info.title}</div>
 				<div class="intor_date">{:date('Y-m-d', $info.createtime)}</div>
 			</div>
+			{if condition="$buyed eq 0"}
 			<div><button class="common_btn">购买</button></div>
+			{/if}
 		</div>
-
+		
+		{if condition="$buyed eq 1"}
+		<div class="intor_word detail_word"><video src="{$info.videofile}" controls></video></div>
+		{/if}
 		<div class="intor_word detail_word">{$info.content}</div>
 
 		<!-- <h3 class="more_title">付款说明</h3>
@@ -44,5 +49,25 @@
 
 	<!-- 底部 -->
 	{include file="common/footer"}
+
+<script type="text/javascript" src="/statics/layer/layer.js"></script>
+<script type="text/javascript">
+	$('.common_btn').click(function(){
+		var id ="{$info.id}";
+		$.ajax({
+			url: "{:url('index/study/ajaxBuyZiliao')}",
+			type: 'post',
+			dataType:'json',
+			data:{ziliao_id:id},
+			success:function(data){
+				if(data.status == 1){
+					layer.msg('下单成功');
+				} else {
+					layer.msg(data.msg);
+				}
+			}
+		})
+	})
+</script>
 </body>
 </html>

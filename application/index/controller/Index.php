@@ -25,14 +25,18 @@ class Index extends Frontend
             ->field('title, image, link')
             ->select();
 
-        $this->assign('adList', $adList);
-        return $this->view->fetch();
-    }
+        // 行业知识
+        $knowledge = Db::name('knowledge')->order('id desc')->limit(5)->select();
+        // 热门项目
+        $project = Db::name('project')->where('is_delete', 0)->order('id desc')->limit(5)->select();
+         // 行业知识
+        $exhibition = Db::name('exhibition')->order('id desc')->limit(5)->select();
 
-    public function news()
-    {
-        $newslist = [];
-        return jsonp(['newslist' => $newslist, 'new' => count($newslist), 'url' => 'https://www.fastadmin.net?ref=news']);
+        $this->assign('adList', $adList);
+        $this->assign('knowledge', $knowledge);
+        $this->assign('project', $project);
+        $this->assign('exhibition', $exhibition);
+        return $this->view->fetch();
     }
 
 }

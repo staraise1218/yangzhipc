@@ -54,26 +54,27 @@
             <!-- 新闻展示 -->
             <!-- 标题 -->
             <div class="index_title index_flex">
-                <div class="index_title_l">新闻展示</div>
-                <a href="#" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
+                <div class="index_title_l">行业知识</div>
+                <a href="{:url('index/study/industryknowledge')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
             </div>
             <!-- 内容 -->
             <div class="index_content">
                 <div class="index_position index_flex">
-                    <div class="index_l"><img src="/statics/images/img/img_236_136.png"></div>
+                    <div class="index_l"><img src="{$knowledge[0]['thumbimage']}"></div>
                     <div class="index_r">
-                        <div><a class="index_content_title" href="#">新五丰：前三季度净利下，百分之182全年扭亏无望</a></div>
+                        <div><a class="index_content_title" href="#">{$knowledge[0]['title']}</a></div>
                         <div class="index_content_div index_small">
-                            10月29日，湖南生猪养殖企业新五丰发布2018年三季报显示，其1-9月实现营业收入12.15亿元，同比下降6.28%;净利润为-4345.37万元，同比下降182.61%。
+                            {$knowledge[0]['description']}
                         </div>
-                        <div class="index_content_date index_small">2018-11-06</div>
+                        <div class="index_content_date index_small">{:date('Y-m-d', $knowledge[0]['createtime'])}</div>
                     </div>
                 </div>
                 <ul class="index_content_ul">
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况胞胎性价比之王100是什么情况胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
+                    {foreach name="knowledge" item="item" key="k"}
+                    <?php if($k<1){continue;}?>
+                    <li><a class="over" href="#">{$item.title}</a> <span class="index_small">{:date('Y-m-d', $item.createtime)}</span></li>
+                    {/foreach}
+
                 </ul>
             </div>
 
@@ -81,25 +82,26 @@
             <!-- 标题 -->
             <div class="index_title index_flex">
                 <div class="index_title_l">热门项目</div>
-                <a href="#" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
+                <a href="{:url('index/project/index')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
             </div>
             <!-- 内容 -->
             <div class="index_content">
                 <div class="index_position index_flex">
-                    <div class="index_l"><img src="/statics/images/img/img_236_136.png"></div>
+                    <div class="index_l"><img src="{$project[0]['thumbimage']}"></div>
                     <div class="index_r">
-                        <div><a class="index_content_title" href="#">新五丰：前三季度净利下，百分之182全年扭亏无望</a></div>
+                        <div><a class="index_content_title" href="#">{$project[0]['title']}</a></div>
                         <div class="index_content_div index_small">
-                            10月29日，湖南生猪养殖企业新五丰发布2018年三季报显示，其1-9月实现营业收入12.15亿元，同比下降6.28%;净利润为-4345.37万元，同比下降182.61%。
+                            {$project[0]['description']}
                         </div>
-                        <div class="index_content_date index_small">2018-11-06</div>
+                        <div class="index_content_date index_small">{:date('Y-m-d', $project[0]['createtime'])}</div>
                     </div>
                 </div>
                 <ul class="index_content_ul">
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况胞胎性价比之王100是什么情况胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
+                    {foreach name="project" item="item" key="k"}
+                    <?php if($k<1){continue;}?>
+                    <li><a class="over" href="#">{$item.title}</a> <span class="index_small">{:date('Y-m-d', $item.createtime)}</span></li>
+                    {/foreach}
+
                 </ul>
             </div>
         </div>
@@ -120,26 +122,27 @@
             <!-- 项目推荐 -->
             <!-- 标题 -->
             <div class="index_title index_flex">
-                <div class="index_title_l">项目推荐</div>
-                <a href="#" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
+                <div class="index_title_l">行业会展</div>
+                <a href="{:url('index/resource/exhibition')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
             </div>
             <!-- 内容 -->
             <div class="index_content">
                 <div class="index_position index_flex">
-                    <div class="index_l"><img src="/statics/images/img/img_236_136.png"></div>
+                    <div class="index_l"><img src="{$exhibition[0]['thumbimage']}"></div>
                     <div class="index_r">
-                        <div><a class="index_content_title" href="#">新五丰：前三季度净利下，百分之182全年扭亏无望</a></div>
+                        <div><a class="index_content_title" href="#">{$exhibition[0]['title']}</a></div>
                         <div class="index_content_div index_small">
-                            10月29日，湖南生猪养殖企业新五丰发布2018年三季报显示，其1-9月实现营业收入12.15亿元，同比下降6.28%;净利润为-4345.37万元，同比下降182.61%。
+                            {$exhibition[0]['description']}
                         </div>
-                        <div class="index_content_date index_small">2018-11-06</div>
+                        <div class="index_content_date index_small">{:date('Y-m-d', $exhibition[0]['createtime'])}</div>
                     </div>
                 </div>
                 <ul class="index_content_ul">
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况胞胎性价比之王100是什么情况胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
-                    <li><a class="over" href="#">名气源于实力，揭秘双胞胎性价比之王100是什么情况</a> <span class="index_small">2018-09-11</span></li>
+                    {foreach name="exhibition" item="item" key="k"}
+                    <?php if($k<1){continue;}?>
+                    <li><a class="over" href="#">{$item.title}</a> <span class="index_small">{:date('Y-m-d', $item.createtime)}</span></li>
+                    {/foreach}
+
                 </ul>
             </div>
         </div>

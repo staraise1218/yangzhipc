@@ -174,6 +174,8 @@ class Study extends Frontend
                 ->count();
             if($count) $buyed = 1;
         }
+        // 如果价格为0 则可以看视频
+        if($info['price'] == 0) $buyed = 1;
 
         $this->assign('info', $info);
         $this->assign('buyed', $buyed);
@@ -218,7 +220,21 @@ class Study extends Frontend
             ->where('id', $id)
             ->find();
 
+        $isLogin = $this->auth->isLogin();
+        $buyed = 0;
+        if($isLogin){
+            $user_id = $this->auth->id;
+            $count = Db::name('ziliao_order')
+                ->where('ziliao_id', $id)
+                ->where('user_id',$user_id)
+                ->count();
+            if($count) $buyed = 1;
+        }
+        // 如果价格为0 则可以看视频
+        if($info['price'] == 0) $buyed = 1;
+
         $this->assign('info', $info);
+        $this->assign('buyed', $buyed);
         return $this->fetch();
     }
 
@@ -252,6 +268,42 @@ class Study extends Frontend
         );
 
         if(Db::name('video_order')->insert($data)){
+            die(json_encode(array('status'=>'1', 'msg'=>'购买成功')));
+        } else {
+            die(json_encode(array('status'=>'0', 'msg'=>'购买失败')));
+        }
+    }
+
+    // 购买资料
+    public function ajaxBuyZiliao(){
+        $ziliao_id = input('ziliao_id');
+        // 检测用户是否登录
+        $user_id = $this->auth->id;
+        if(!$user_id) die(json_encode(array('status'=>'-1', 'msg'=>'请先登录')));
+
+        // 检测数据是否存在
+        $ziliao = Db::name('ziliao')
+            ->where('id', $ziliao_id)
+            ->find();
+        if(empty($ziliao)) die(json_encode(array('status'=>'0', 'msg'=>'数据不存在')));
+
+        // 检测是否已购买
+        $count = Db::name('ziliao_order')
+            ->where('user_id', $user_id)
+            ->where('ziliao_id', $ziliao_id)
+            ->count();
+        if($count) die(json_encode(array('status'=>'0', 'msg'=>'您已购买')));
+
+        $order_sn = $this->generateOrderSn();
+        $data = array(
+            'ziliao_id' => $ziliao_id,
+            'price' => $ziliao['price'],
+            'user_id' => $user_id,
+            'order_sn' => $order_sn,
+            'createtime' => time(),
+        );
+
+        if(Db::name('ziliao_order')->insert($data)){
             die(json_encode(array('status'=>'1', 'msg'=>'购买成功')));
         } else {
             die(json_encode(array('status'=>'0', 'msg'=>'购买失败')));
