@@ -83,6 +83,7 @@ header{
 /*中间main*/
 .main{
 	padding: 40px 23% 10px 23%;
+	min-height: 400px;
 }
 
 /*面包屑导航*/
