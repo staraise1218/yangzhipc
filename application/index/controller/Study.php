@@ -126,7 +126,7 @@ class Study extends Frontend
         return $this->fetch();
     }
 
-    // 研究进展更多
+    // 培训视频
     public function video(){
         $category_id = input('category_id', 0);
         $time = input('time');

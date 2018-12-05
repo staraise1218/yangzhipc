@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>首页</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
+  </script>
+
+  <link rel="stylesheet" href="/staticm/js/js-build/jquery-weui-build/dist/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="/staticm/css/common.css">
+
+  <script src="/staticm/js/js-build/jquery-3.1.1.min.js"></script>
+  <script src="/staticm/js/js-build/jquery-weui-build/dist/js/jquery-weui.min.js"></script>
+  <script src="/staticm/js/js-build/jquery-weui-build/dist/js/swiper.min.js"></script>
+  <script src="/staticm/js/Global.js"></script>
+  <script src="/staticm/js/index.js"></script>
+</head>
+
+<body>
+  <!-- 头 -->
+  {include file="common/header"}
+
+  <!-- 幻灯片 -->
+  <div class="posiRe swiperWrap">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {foreach name="adList" item="ad" key="k"}
+        <div class="swiper-slide"><a href="{$ad.link ? $ad.link : 'javascript:;'}"><img src="{$ad.image}" alt="图片"></a></div>
+        {/foreach}
+      </div>
+    </div>
+    <div class="swiper-pagination swiper-pagination-bullets">
+        {foreach name="adList" item="ad" key="k"}
+        <span class="swiper-pagination-bullet {if $k == 0}swiper-pagination-bullet-active{/if}"></span>
+        {/foreach}
+
+    </div>
+  </div>
+
+  <!-- 行业知识 -->
+  <div class="container">
+    <div class="flexCenter containerHead">
+      <span class="containerHeadText">行业知识</span>
+      <span class="more" onclick="window.location=''">更多</span>
+    </div>
+
+    <div class="flexCenter picTextItem">
+      <img src="{$knowledge[0]['thumbimage']}" alt="图片">
+      <div>
+        <h5>{$knowledge[0]['title']}</h5>
+        <p class="text">{$knowledge[0]['description']}</p>
+        <p class="date">{:date('Y-m-d', $knowledge[0]['createtime'])}</p>
+      </div>
+    </div>
+    {foreach name="$knowledge" item="item" key="k"}
+    <?php if($k==0) continue;?>
+    <div class="textItem">
+      <p>{$item.title}</p>
+      <span class="date">{:date('Y-m-d', $item.createtime)}</span>
+    </div>
+    {/foreach}
+  </div>
+
+  <!-- 公司宣传片 -->
+  <div class="container">
+    <div class="flexCenter containerHead">
+      <span class="containerHeadText">公司宣传片</span>
+      <!-- <span class="more">更多</span> -->
+    </div>
+
+    <div class="videoWrap">
+      <!-- <img src="/staticm/images/timg.jpg" alt="宣传片">
+      <span class="positionCenter playBtn"></span> -->
+      <video width="100%" height="100%"  src="{$site.index_video}" controls></video>
+    </div>
+  </div>
+
+  <!-- 培训项目 -->
+  <div class="container">
+    <div class="flexCenter containerHead">
+      <span class="containerHeadText">培训项目</span>
+      <span class="more" onclick="window.location='{:url('mobile/project/index')}'">更多</span>
+    </div>
+
+    <div class="dateWrap">
+        {foreach name="project" item="item"}
+        <div class="dateContent">
+            <h5 class="flexCenter">
+                <span class="dateContentTitle">{$item.title}</span>
+                <span class="date">{:date('Y-m-d', $item.createtime)}</span>
+            </h5>
+            <p>{$item.description}</p>
+        </div>
+        {/foreach}
+  </div>
+
+  <!-- 培训视频 -->
+  <div class="container trainingVideo">
+    <div class="flexCenter containerHead">
+      <span class="containerHeadText">培训视频</span>
+      <span class="more">更多</span>
+    </div>
+
+    <div class="flexCenter posiRe picTextItem">
+      <img src="/staticm/images/timg.jpg" alt="图片">
+      <div>
+        <h5>新五丰：前三季度净利</h5>
+        <p class="text">前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净</p>
+        <p class="date">2018-11-06</p>
+      </div>
+      <span class="smPlayBtn"></span>
+    </div>
+
+    <div class="flexCenter posiRe picTextItem">
+      <img src="/staticm/images/timg.jpg" alt="图片">
+      <div>
+        <h5>新五丰：前三季度净利</h5>
+        <p class="text">前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净</p>
+        <p class="date">2018-11-06</p>
+      </div>
+      <span class="smPlayBtn"></span>
+    </div>
+  </div>
+
+  <!-- footer -->
+  {include file="common/footer"}
+ 
+</body>
+
+</html>

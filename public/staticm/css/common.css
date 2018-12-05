@@ -1,0 +1,543 @@
+/* reset */
+body,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form {
+    margin: 0;
+}
+
+ol,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var,
+optgroup {
+    font-style: normal;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    *font-size: 100%;
+}
+
+fieldset,
+img,
+a img,
+:link img,
+:visited img {
+    border: 0;
+}
+
+:focus {
+    outline: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th {
+    text-align: left;
+}
+
+sup,
+sub {
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+.clearfix:after {
+    content: '';
+    display: table-cell;
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+img {
+    display: inline-block;
+    /* 火狐浏览器下  没有src的img  是类似于span的内联元素 */
+}
+
+input,
+textarea,
+img,
+video,
+object {
+    box-sizing: border-box;
+    /* 这几个替换元素设为border-box */
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+/*自定义*/
+
+
+/*让页面滚动条不发生晃动*/
+
+
+/* html {
+	overflow-y: scroll;
+}
+:root {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+:root body {
+	position: absolute;
+}
+body {
+	width: 100vw;
+	overflow: hidden;
+} */
+
+
+/*设置一些 字号 字体 字颜色*/
+
+
+/* body {
+    font-size: 14px;
+    font-family: "微软雅黑";
+}
+
+a {
+    color: #6a6767;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+} */
+
+
+/*自定义 end*/
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////*/
+qqqceshi{
+  align-items: flex-start;
+  justify-content: center;
+  align-items: center
+  /* background: red url(图片路径) center center no-repeat */
+}
+
+/* reset end */
+
+/* common */
+body{
+  font-family: "HiraginoSansGB-W3";
+
+  font-size: 0.14rem;
+}
+a{
+  text-decoration: none;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+.flexCenter{
+  display: flex;
+  align-items: center;
+}
+.flexColumn{
+  display: flex;
+  align-items: center;
+  flex-direction: column
+}
+.posiRe{
+  position: relative;
+}
+.positionCenter{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.mBtn{
+  /* display: inline-block;
+  width: 3.47rem;
+  height: 0.44rem;
+  line-height: 0.44rem;
+  text-align: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(11, 78, 161, 1); */
+  background: linear-gradient(to right, rgba(30, 101, 190, 1), rgba(11, 78, 161, 1)); /* 标准的语法 */
+  border-radius: 0.05rem;
+  font-size: 0.14rem;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+/* header */
+.headerTip{
+  height:0.64rem;
+  background-color: rgba(244, 244, 244, 1);
+  justify-content: center;
+}
+.downLoadTip{
+  font-weight: 600;
+  font-size: 0.16rem;
+  color: rgba(78, 78, 78, 1);
+}
+.downLoadBtn{
+  display: inline-block;
+  width: 0.81rem;
+  height: 0.36rem;
+  line-height: 0.36rem;
+  text-align: center;
+  border-radius: 0.18rem;
+  background: linear-gradient(to right, rgba(30, 101, 190, 1), rgba(11, 78, 161, 1)); /* 标准的语法 */
+  font-size: 0.14rem;
+  color: #fff;
+  margin-left: 0.25rem;
+}
+.headerLogo{
+  height: 0.6rem;
+  background: linear-gradient(to right, rgba(30, 101, 190, 1), rgba(11, 78, 161, 1)); /* 标准的语法 */
+  justify-content: space-between;
+  padding: 0 0.1rem;
+}
+.headerLogo>img{ /*最上面的logo img*/
+  width:1rem;
+  height: 0.5rem;
+}
+.indexOpen{
+  display: inline-block;
+  width: 0.2rem;
+  height: 0.2rem;
+  background: url(../images/展开@2x.png) center center no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+}
+/* footer */
+.footer{
+  height: 0.75rem;
+  background-color: rgba(61, 66, 77, 1);
+  font-size: 0.11rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+.footer>p{
+  margin: 0.05rem 0;
+}
+/* 展开div */
+.openDiv{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0,0.4);
+  z-index: 10;
+}
+.openDiv>ul{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 3.27rem;
+  background-color: #fff;
+  padding-top: 0.6rem;
+  transform: translate(100%,0);
+  transition: all 0.3s;
+  -webkit-transform: translate(100%,0);
+  -webkit-transition: all 0.3s;
+}
+.openDiv>ul>li{
+  line-height: 0.65rem;
+  border-bottom: 1px solid rgba(245, 245, 245, 1);
+  margin: 0 0.25rem;
+}
+.openDiv>ul>li:last-child{
+  border-bottom: none;
+}
+.openDiv>ul>li>a{
+  color: rgba(63, 63, 63, 1);
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+/* index.css */
+body{
+  background-color: rgba(240, 240, 240, 1);
+}
+.date{
+  font-size: 0.11rem;
+  color: rgba(153, 153, 153, 1);
+}
+/* 幻灯片 */
+.swiperWrap{
+  height: 1.97rem;
+}
+.swiper-container{
+  height: 100%;
+}
+.swiper-container img{
+  height: auto;
+}
+.swiper-pagination{
+  position: absolute;
+  bottom: 0.08rem;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.swiper-pagination .swiper-pagination-bullet{
+  margin: 0.04rem;
+}
+/* 块 */
+.container{
+  background-color: #fff;
+  padding: 0 0.15rem;
+  margin-bottom: 0.08rem;
+  box-shadow: 0 0 2px 0 rgba(214,214,214,0.50);
+}
+.containerHead{
+  justify-content: space-between;
+  height: 0.55rem;
+}
+.containerHeadText{
+  font-size: 0.16rem;
+  color: rgba(77, 77, 77, 1);
+  font-weight: 600;
+}
+.more{
+  font-size: 0.12rem;
+  color: rgba(153, 153, 153, 1);
+  display: inline-block;
+  height: 0.12rem;
+  line-height: 0.12rem;
+  background: url(../images/个人中心-进入@2x.png) right center no-repeat;
+  background-size: 0.1rem 0.1rem;
+  padding-right: 0.1rem;
+}
+/* 图片文字 */
+.picTextItem{
+  margin-bottom: 0.2rem;
+}
+.picTextItem>img{
+  width: 1.4rem;
+  height: 1.05rem;
+}
+.picTextItem>div{
+  height: 1.05rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 0.1rem;
+}
+.picTextItem>div>h5{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+
+  font-size: 0.14rem;
+  color: rgba(75, 75, 75, 1);
+}
+.picTextItem>div>p.text{
+  font-size: 0.12rem;
+  color: rgba(77, 77, 77, 1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.picTextItem>div>p.date{
+  
+}
+/* 图片文字 end */
+.textItem{
+  display: flex;
+  border-top: 1px solid rgba(240, 240, 240, 1);
+  padding: 0.16rem 0;
+}
+.textItem>p{
+  flex: 1 0 0;
+  font-size: 0.14rem;
+  color: rgba(61, 61, 61, 1);
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.textItem>span.date{
+  display: inline-block;
+  width: 0.9rem;
+  text-align: right;
+  margin-top: 0.01rem;
+}
+/* 公司宣传片 */
+.videoWrap{
+  width: 3.47rem;
+  height: 2.29rem;
+  padding-bottom: 0.2rem;
+  position: relative;
+}
+.playBtn{
+  display: block;
+  width: 0.52rem;
+  height: 0.52rem;
+  background: url(../images/播放@2x.png) center center no-repeat;
+  background-size: 100%;
+}
+/* 培训项目 */
+.dateWrap{
+}
+.dateWrap .dateTitle{
+  height: 0.4rem;
+}
+.dateWrap .dateTitle>span{
+  display: inline-block;
+  width: 0.91rem;
+  height: 0.34rem;
+  line-height: 0.34rem;
+  text-align: center;
+  background-color: rgba(246, 246, 246, 1);
+  color: rgba(77, 77, 77, 1);
+  font-size: 0.12rem;
+  font-weight: normal;
+}
+.dateWrap .dateContent{
+  border-bottom: 1px solid rgba(240, 240, 240, 1);
+  padding-bottom: 0.18rem;
+}
+.dateWrap .dateContent:last-child{
+  border-bottom: none;
+}
+.dateWrap .dateContent>h5{
+  justify-content: space-between;
+  /* height: 0.4rem; */
+  height: 0.35rem;
+  padding-top: 0.05rem;
+}
+.dateWrap .dateContent>h5 .dateContentTitle{
+  font-size: 0.14rem;
+}
+.dateWrap .dateContent .date{
+  font-weight: normal;
+}
+.dateWrap .dateContent>p{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+
+  color: rgba(128, 128, 128, 1);
+  font-size: 0.12rem;
+  line-height: 0.17rem;
+}
+/* 培训视频 */
+.trainingVideo .picTextItem{
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(240, 240, 240, 1);
+}
+.trainingVideo,
+.trainingVideo .picTextItem:last-child{
+  margin-bottom: 0;
+  border-bottom: none;
+}
+.smPlayBtn{
+  display: block;
+  width: 0.3rem;
+  height: 0.3rem;
+  position: absolute;
+  top: 0.38rem;
+  left: 0.55rem;
+  background: url(../images/播放@2x.png) center center no-repeat;
+  background-size: 100%;
+}
+/* 网上报名 */
+.inputItem{
+  border-bottom: 1px solid rgba(240, 240, 240, 1);
+  font-size: 0.14rem;
+  justify-content: space-between;
+  line-height: 0.5rem;
+}
+.inputItem:last-of-type{
+  border-bottom: none;
+}
+.inputItem>span{
+  color: rgba(153, 153, 153, 1);
+  display: inline-block;
+  width: 0.7rem;
+}
+.inputItem>input{
+  border: none;
+  outline: none;
+  text-align: right;
+  flex: 1 0 0;
+  color: rgba(76, 76, 76, 1);
+  font-weight: 500;
+}
+input::-webkit-input-placeholder {
+  /* placeholder颜色  */
+  color: rgba(204, 204, 204, 1);
+  /* placeholder字体大小  */
+  /* font-size: 12px; */
+  /* placeholder位置  */
+  /* text-align: right; */
+}
+.btnBox{
+  width: 3.47rem;
+  height: 0.44rem;
+  padding: 0.25rem 0;
+}
+.singupInfo{
+  margin-bottom: 0;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>网上报名</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/project_enroll.css">
+	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/statics/layer/layer.js"></script>
+
+</head>
+<body>
+	<!-- 顶部菜单 -->
+	{include file="common/header"}
+	<!-- 面包屑导航 -->
+	<ul class="bread breadcrumb">
+	    <li><a href="#">项目与服务</a></li>
+	    <li><a href="#">专业培训</a></li>
+	    <li><a href="#">项目介绍</a></li>
+	    <li class="active"><a href="#">网上报名</a></li>
+	</ul>
+	<!-- 中间主要内容 -->
+	<div class="main">
+		<h3 class="more_title">联系方式</h3>
+		<ul class="enroll_ul">
+			<li><span class="enroll_ul_name">公司名称</span> <span class="enroll_ul_content">北京养殖有限公司</span></li>
+			<li><span class="enroll_ul_name">公司地址</span> <span class="enroll_ul_content">北京海东城区青龙胡同112号广业大厦B座</span></li>
+			<li><span class="enroll_ul_name">固定电话</span> <span class="enroll_ul_content">86-010-88244217</span></li>
+			<li><span class="enroll_ul_name">固定电话</span> <span class="enroll_ul_content">未提供</span></li>
+			<li><span class="enroll_ul_name">邮政编码</span> <span class="enroll_ul_content">100007</span></li>
+		</ul>
+
+		<h3 class="more_title">报名信息</h3>
+		<form id="enrollForm" action="{:url('index/project/enroll')}" method="post">
+		<ul class="enroll_ul">
+			<li><span class="enroll_ul_name">公司名称</span> <input class="enroll_ul_input" type="text" name="company_name" placeholder="请输入公司名称"></li>
+			<li><span class="enroll_ul_name">公司地址</span> <input class="enroll_ul_input" type="text" name="company_address" placeholder="请输入公司地址"></li>
+			<li><span class="enroll_ul_name">姓名</span> <input class="enroll_ul_input" type="text" name="fullname" placeholder="请输入姓名"></li>
+			<li><span class="enroll_ul_name">电话</span> <input class="enroll_ul_input" type="text" name="phone" placeholder="请输入电话"></li>
+			<li><span class="enroll_ul_name">邮箱</span> <input class="enroll_ul_input" type="text" name="email" placeholder="请输入邮箱"></li>
+			<li><span class="enroll_ul_name">职位</span> <input class="enroll_ul_input" type="text" name="position" placeholder="请输入职位"></li>
+			<li><span class="enroll_ul_name">专业</span> <input class="enroll_ul_input" type="text" name="profession" placeholder="请输入专业"></li>
+		</ul>
+		
+		<div class="enroll_btn ac"><button type="button" class="common_btn">提交信息</button></div>
+		<input type="hidden" name="project_id" value="{$project_id}">
+		</form>
+	</div>
+
+	<!-- 底部 -->
+	{include file="common/footer"}
+<script type="text/javascript">
+	$(function(){
+		$('.common_btn').click(function(){
+			var action = $('#enrollForm').attr('action');
+			$.ajax({
+				url: action,
+				type: 'post',
+				dataType: 'json',
+				data: $('#enrollForm').serialize(),
+				success: function(data){
+					if(data.status == 1){
+						layer.msg('报名成功', {icon:1, time:2000}, function(){
+						});
+					} else {
+						layer.msg('报名失败');
+					}
+				},
+				error:function(){
+					layer.msg('服务器错误，请稍后再试');
+				}
+			})
+		})
+	})
+</script>
+</body>
+</html>

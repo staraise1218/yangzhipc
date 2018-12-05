@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>培训项目</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/project.css">
+	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+
+</head>
+<body>
+	<!-- 顶部菜单 -->
+	{include file="common/header"}
+	<!-- 轮播图 -->
+    <div id="myCarousel" class="carousel slide">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+            {foreach name="adList" item="item" key="k"}
+            <li data-target="#myCarousel" data-slide-to="{$k}" {$k==0 ? ' class="active"' : ''}></li>
+            {/foreach}
+        </ol>   
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            {foreach name="adList" item="item" key="k"}
+            <div class="item {$k == 0 ? 'active' : ''}">
+                <a href="{$item.link ? $item.link : 'javascript:;'}"><img src="{$item.image}" alt="{$item.title}"></a>
+            </div>
+            {/foreach}
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div> 
+	<!-- 中间主要内容 -->
+	<div class="main">
+		<h3 class="more_title">培训项目</h3>
+		<div class="project">
+			<!-- 标题 -->
+			<div class="project_title project_flex">
+				<div class="project_l">{:substr($now_month, 0, 4)}年{:substr($now_month, 4)}月</div>
+				<a href="{:url('index/project/all')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
+			</div>
+
+			<ul class="project_ul">
+				{foreach name="nowMonthProjectList" item="nowMonthProject"}
+				<li>
+					<a href="{:url('index/project/detail', array('id'=>$nowMonthProject.id))}">
+						<div class="project_item_l">
+							<div class="project_big">{:date('d', $nowMonthProject['createtime'])}</div>
+							<div class="project_small">{:date('Y-m', $nowMonthProject['createtime'])}</div>
+						</div>
+						<div class="project_item_r">
+							<div class="project_item_title">{$nowMonthProject.title}</div>
+							<div class="project_item_word">{$nowMonthProject.description}</div>
+						</div>
+					</a>
+				</li>
+				{/foreach}
+			</ul>
+		</div>
+		<div class="project">
+			<!-- 标题 -->
+			<div class="project_title project_flex">
+				<div class="project_l">{:substr($pre_month, 0, 4)}年{:substr($pre_month, 4)}月</div>
+				<a href="{:url('index/project/all')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
+			</div>
+
+			<ul class="project_ul">
+				{foreach name="preMonthProjectList" item="preMonthProject"}
+				<li>
+					<a href="{:url('index/project/detail', array('id'=>$preMonthProject.id))}">
+						<div class="project_item_l">
+							<div class="project_big">{:date('d', $preMonthProject['createtime'])}</div>
+							<div class="project_small">{:date('Y-m', $preMonthProject['createtime'])}</div>
+						</div>
+						<div class="project_item_r">
+							<div class="project_item_title">{$preMonthProject.title}</div>
+							<div class="project_item_word">{$preMonthProject.description}</div>
+						</div>
+					</a>
+				</li>
+				{/foreach}
+			</ul>
+		</div>
+	</div>
+
+	<!-- 底部 -->
+	{include file="common/footer"}
+</body>
+</html>
