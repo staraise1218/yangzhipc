@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>培训视频</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
+  </script>
+
+  <link rel="stylesheet" href="/staticm/css/weui.css">
+  <link rel="stylesheet" href="/staticm/js/js-build/jquery-weui-build/dist/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="/staticm/css/common.css">
+
+  <script src="/staticm/js/js-build/jquery-3.1.1.min.js"></script>
+  <script src="/staticm/js/js-build/jquery-weui-build/dist/js/jquery-weui.min.js"></script>
+  <script src="/staticm/js/Global.js"></script>
+  <link rel="stylesheet" type="text/css" href="/plugin/layui/css/layui.css">
+  <script type="text/javascript" src="/plugin/layui/layui.js"></script>
+  <script type="text/javascript">
+    layui.use('flow', function(){
+      var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+      var flow = layui.flow;
+      flow.load({
+        elem: '#trainingVideo', //指定列表容器
+        isAuto: true,
+        mb: 50,
+        end: '没有更多数据',
+        done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+          var lis = [];
+          //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+          $.post('/index.php/mobile/video/index', {page:page}, function(res){
+            res = JSON.parse(res);
+            //假设你的列表返回在data集合中
+            layui.each(res.list, function(index, item){
+              
+              var html = '';
+             
+              html += '<div class="flexCenter posiRe picTextItem">';
+              html +=     '<img src="'+item.thumbimage+'" alt="图片">';
+              html +=     '<div>';
+              html +=         '<h5>'+item.title+'</h5>';
+              html +=         '<p class="text">'+item.description+'</p>';
+              html +=         '<p class="date">'+item.createtime+'</p>';
+              html +=     '</div>';
+              html +=     '<span class="smPlayBtn"></span>';
+              html += '</div>';
+
+              lis.push(html);
+            }); 
+            //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+            //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+            next(lis.join(''), page < res.pages);  
+          });
+        }
+      }); 
+    });
+  </script>
+
+</head>
+
+<body style="background-color:#fff;">
+  <!-- 头 -->
+  {include file="common/header"}
+
+  <!-- 公司宣传片 -->
+  <div class="container">
+    <div class="flexCenter containerHead">
+      <span class="containerHeadText">公司宣传片</span>
+      <!-- <span class="more">更多</span> -->
+    </div>
+
+    <div class="videoWrap">
+      <!-- <img src="/staticm/images/timg.jpg" alt="宣传片"> -->
+      <video width="100%" height="100%"  src="{$site.index_video}" controls></video>
+      <!-- <span class="positionCenter playBtn"></span> -->
+    </div>
+  </div>
+
+  <!-- 培训视频 -->
+  <div class="container trainingVideo" id="trainingVideo">
+    <div class="flexCenter containerHead">
+      <span class="containerHeadText">培训视频</span>
+      <!-- <span class="more">更多</span> -->
+    </div>
+  <!-- {foreach name="list" item="item"}
+    <div class="flexCenter posiRe picTextItem">
+      <img src="{$item.thumbimage}" alt="图片">
+      <div>
+        <h5>{$item.title}</h5>
+        <p class="text">{$item.description}</p>
+        <p class="date">{$item.createtime}</p>
+      </div>
+      <span class="smPlayBtn"></span>
+    </div>
+  {/foreach} -->
+  </div>
+
+</body>
+
+</html>

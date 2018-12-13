@@ -1,6 +1,6 @@
 <?php
 
-namespace app\index\controller;
+namespace app\mobile\controller;
 
 use app\common\controller\Frontend;
 use app\common\library\Token;
@@ -22,16 +22,30 @@ class Project extends Frontend
 
         $page = input('page', 1);
 
-        $projectList = Db::name('project')
+        $offset = 10; // 每页显示条数
+        $count = Db::name('project')->where('is_delete', 0)->count();
+        $pages = ceil($count/$offset);
+
+        $list = Db::name('project')
             ->where('is_delete', 0)
             ->field('id, title, description, createtime')
-            ->limit(10)
-            ->page($page)
             ->order('id desc')
+            ->page($page)
+            ->limit($offset)
             ->select();
 
-    	$this->assign('projectList', $projectList);
-    	return $this->fetch();
+        if(is_array($list) && !empty($list)){
+            foreach ($list as &$item) {
+                $item['createtime'] = date('Y-m-d', $item['createtime']);
+            }
+        }
+
+    	if(request()->isPost()){
+            die(json_encode(array('list' => $list, 'pages' => $pages)));
+        } else {
+            $this->assign('list', $list);
+            return $this->fetch();
+        }
     }
 
     public function detail(){
@@ -43,28 +57,6 @@ class Project extends Frontend
     		->find();
 
     	$this->assign('info', $info);
-    	return $this->fetch();
-    }
-
-    public function page(){
-    	$id = input('id');
-
-    	$info = Db::name('page')
-    		->where('id', $id)
-    		->find();
-
-    	$this->assign('info', $info);
-    	return $this->fetch();
-    }
-
-    public function all(){
-    	$list = Db::name('project')
-    		->where('is_delete', 0)
-    		->field('id, title, description, createtime')
-    		->order('id desc')
-    		->paginate(15);
-
-    	$this->assign('list', $list);
     	return $this->fetch();
     }
 

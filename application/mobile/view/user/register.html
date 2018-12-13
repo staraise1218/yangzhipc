@@ -1,58 +1,71 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>养殖平台官网-注册账号</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/common.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/register.css">
-    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <title>注册</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
+  </script>
+
+  <link rel="stylesheet" href="/staticm/css/common.css">
+  <link rel="stylesheet" href="/staticm/css/register.css">
+
+
+  <script src="/staticm/js/js-build/jquery-3.1.1.min.js"></script>
+  <script src="/staticm/js/Global.js"></script>
 </head>
-<body>
-    <!-- 顶部菜单 -->
-    {include file="common/header"}
-    <!-- 中间主要内容 -->
-    <div class="main-content">
-        <div class="main-con-wrap">
-            <ul class="main-con-rub">
-                <li><a href="#">会员中心</a></li>
-                <li class=""><a href="#">注册账号</a></li>
-            </ul>
-            <div class="forget">
-                <h5>注册账号</h5>
-                <form id="registerform" method="post">
-                    <div class="in-item">
-                        <span>手机</span>
-                        <input type="text" name="mobile" id="mobile" placeholder="请输入手机号">
-                    </div>
-                    <div class="in-item">
-                        <span>验证码</span>
-                        <div class="in-item-cap">
-                            <input type="text" name="code" id="code" placeholder="请输入验证码" class="in-item-cap-inp">
-                            <span>获取验证码</span>
-                        </div>
-                    </div>
-                    <div class="in-item">
-                        <span>密码</span>
-                        <input type="text" name="password" id="password" placeholder="请输入密码">
-                    </div>
-                    <div class="in-item">
-                        <span>确认密码</span>
-                        <input type="text" name="password_confirm" id="password_confirm" placeholder="再次输入密码">
-                    </div>
-                    <div class="rule"><span><img src="/statics/images/icons/dui.png"></span>阅读并同意相关规定</div>
-                    <button type="button" onclick="check_submit()">注册</button>
-                    <input type="hidden" name="url" value="{url}">
-                </form>
-            </div>
-        </div>
+
+<body class="register">
+  <!-- 头 -->
+  {include file="common/header"}
+
+  <div class="flexColumn">
+    <!-- logo -->
+    <div class="flexColumn logoWrap">
+      <div class="logo">
+        <img src="/staticm/images/timg.jpg" alt="logo">
+      </div>
+      <p>logo名称</p>
     </div>
-    <!-- 底部 -->
-    {include file="common/footer"}
+
+    <!-- form -->
+    <div>
+      <form id="registerform" action="">
+        <div class="flexCenter registerItem">
+          <img class="itemIcon" src="/staticm/images/手机号@2x.png" alt="icon">
+          <input type="text" id="mobile" name="mobile" placeholder="请输入手机号">
+        </div>
+        <div class="flexCenter registerItem">
+          <img class="itemIcon" src="/staticm/images/验证@2x.png" alt="icon">
+          <input type="text" id="code" name="code" placeholder="请输入验证码">
+          <span class="getCode">获取验证码</span>
+        </div>
+        <div class="flexCenter registerItem">
+          <img class="itemIcon" src="/staticm/images/密码@2x.png" alt="icon">
+          <input type="password" id="password" name="password" placeholder="请输入密码">
+          <!-- <span class="showPsword"></span> -->
+        </div>
+        <div class="flexCenter registerItem">
+          <img class="itemIcon" src="/staticm/images/密码@2x.png" alt="icon">
+          <input type="password" id="password_confirm" name="password_confirm" placeholder="再次确认密码">
+          <!-- <span class="showPsword"></span> -->
+        </div>
+      </form>
+
+      <div class="btnBox-register">
+        <button class="mBtn" type="button" onclick="check_submit()">注册</button>
+      </div>
+    </div>
+    <!-- form end -->
+
+    <div class="goLogin">
+      已有账号&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="{:url('mobile/user/login')}">去登录</a></span>
+    </div>
+
+    <!-- <p class="regTip">点击注册代表同意<span>使用协议</span>和<span>隐私策略</span></p> -->
+  </div>
 
 <script type="text/javascript" src="/statics/layer/layer.js"></script>
 <script type="text/javascript">
@@ -63,35 +76,36 @@
         var code = $.trim($('#code').val());
 
         if(mobile == ''){
-            showErrorMsg('手机号不能为空!');
+            layer.msg('手机号不能为空!');
             return false;
         }
         if(!checkMobile(mobile)){
-            showErrorMsg('手机号格式不正确!');
-            return false;
-        }
-        if(password == ''){
-            showErrorMsg('密码不能为空!');
-            return false;
-        }
-        if(password_confirm != password){
-            showErrorMsg('两次密码不一致');
+            layer.msg('手机号格式不正确!');
             return false;
         }
         if(code == ''){
-            showErrorMsg('验证码不能为空!');
+            layer.msg('验证码不能为空!');
             return false;
         }
-
+        if(password == ''){
+            layer.msg('密码不能为空!');
+            return false;
+        }
+        if(password_confirm != password){
+            layer.msg('两次密码不一致');
+            return false;
+        }
+        layer.load(2);
         $.ajax({
             type : "POST",
-            url:"{:url('Index/User/register')}",
+            url:"{:url('mobile/User/register')}",
             dataType: "json",
             data: $('#registerform').serialize(),
             success: function(data){
+                layer.closeAll('loading');
                 if(data.code == 1){
                     layer.msg(data.msg, {icon: 1},function(){
-                        window.location.href = "{:url('index/user/index')}";
+                        window.location.href = "{:url('mobile/user/index')}";
                     });
                 }else{
                     layer.alert(data.msg, {icon: 2},function(index){
@@ -134,10 +148,6 @@
         });
     }
 
-    function showErrorMsg(msg){
-        layer.msg(msg, {icon: 2});
-    }
-
     $('#count_down').removeAttr("disabled");
     //倒计时函数
     function jsInnerTimeout(id,intAs)
@@ -173,4 +183,5 @@
     
 </script>
 </body>
+
 </html>

@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/statics/css/common.css?v=1">
     <link rel="stylesheet" type="text/css" href="/statics/css/index.css">
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="/statics/js/bootstrap.js"></script>
@@ -51,32 +51,6 @@
     <div class="index_flex main">
         <!-- 左边 -->
         <div class="index_l">
-            <!-- 新闻展示 -->
-            <!-- 标题 -->
-            <div class="index_title index_flex">
-                <div class="index_title_l">行业知识</div>
-                <a href="{:url('index/study/industryknowledge')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
-            </div>
-            <!-- 内容 -->
-            <div class="index_content">
-                <div class="index_position index_flex">
-                    <div class="index_l"><img src="{$knowledge[0]['thumbimage']}"></div>
-                    <div class="index_r">
-                        <div><a class="index_content_title" href="{:url('index/study/knowledgedetail', array('id'=>$knowledge[0]['id']))}">{$knowledge[0]['title']}</a></div>
-                        <div class="index_content_div index_small">
-                            {$knowledge[0]['description']}
-                        </div>
-                        <div class="index_content_date index_small">{:date('Y-m-d', $knowledge[0]['createtime'])}</div>
-                    </div>
-                </div>
-                <ul class="index_content_ul">
-                    {foreach name="knowledge" item="item" key="k"}
-                    <?php if($k<1){continue;}?>
-                    <li><a class="over" href="{:url('index/study/knowledgedetail', array('id'=>$item['id']))}">{$item.title}</a> <span class="index_small">{:date('Y-m-d', $item.createtime)}</span></li>
-                    {/foreach}
-
-                </ul>
-            </div>
 
             <!-- 热门项目 -->
             <!-- 标题 -->
@@ -100,6 +74,34 @@
                     {foreach name="project" item="item" key="k"}
                     <?php if($k<1){continue;}?>
                     <li><a class="over" href="{:url('index/project/detail', array('id'=>$item['id']))}">{$item.title}</a> <span class="index_small">{:date('Y-m-d', $item.createtime)}</span></li>
+                    {/foreach}
+
+                </ul>
+            </div>
+
+
+            <!-- 行业知识 -->
+            <!-- 标题 -->
+            <div class="index_title index_flex">
+                <div class="index_title_l">行业知识</div>
+                <a href="{:url('index/study/industryknowledge')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
+            </div>
+            <!-- 内容 -->
+            <div class="index_content">
+                <div class="index_position index_flex">
+                    <div class="index_l"><img src="{$knowledge[0]['thumbimage']}"></div>
+                    <div class="index_r">
+                        <div><a class="index_content_title" href="{:url('index/study/knowledgedetail', array('id'=>$knowledge[0]['id']))}">{$knowledge[0]['title']}</a></div>
+                        <div class="index_content_div index_small">
+                            {$knowledge[0]['description']}
+                        </div>
+                        <div class="index_content_date index_small">{:date('Y-m-d', $knowledge[0]['createtime'])}</div>
+                    </div>
+                </div>
+                <ul class="index_content_ul">
+                    {foreach name="knowledge" item="item" key="k"}
+                    <?php if($k<1){continue;}?>
+                    <li><a class="over" href="{:url('index/study/knowledgedetail', array('id'=>$item['id']))}">{$item.title}</a> <span class="index_small">{:date('Y-m-d', $item.createtime)}</span></li>
                     {/foreach}
 
                 </ul>

@@ -82,4 +82,15 @@ class Resource extends Frontend
         $this->assign('info', $info);
         return $this->fetch();
     }
+
+    // 合作伙伴
+    public function partner(){
+
+        $info = Db::name('page')
+            ->where('id', 7)
+            ->find();
+
+        $this->assign('info', $info);
+        return $this->fetch();
+    }
  }

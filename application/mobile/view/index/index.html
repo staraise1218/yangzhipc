@@ -103,26 +103,17 @@
       <span class="containerHeadText">培训视频</span>
       <span class="more">更多</span>
     </div>
-
+    {foreach name="video" item="item"}
     <div class="flexCenter posiRe picTextItem">
-      <img src="/staticm/images/timg.jpg" alt="图片">
+      <img src="{$item.thumbimage}" alt="图片">
       <div>
-        <h5>新五丰：前三季度净利</h5>
-        <p class="text">前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净</p>
-        <p class="date">2018-11-06</p>
+        <h5>{$item.title}</h5>
+        <p class="text">{$item.description}</p>
+        <p class="date">{:date('Y-m-d', $item.createtime)}</p>
       </div>
       <span class="smPlayBtn"></span>
     </div>
-
-    <div class="flexCenter posiRe picTextItem">
-      <img src="/staticm/images/timg.jpg" alt="图片">
-      <div>
-        <h5>新五丰：前三季度净利</h5>
-        <p class="text">前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净前三季度净</p>
-        <p class="date">2018-11-06</p>
-      </div>
-      <span class="smPlayBtn"></span>
-    </div>
+    {/foreach}
   </div>
 
   <!-- footer -->

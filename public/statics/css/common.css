@@ -1,5 +1,5 @@
 body{
-	/*min-width: 1366px;*/
+	min-width: 1366px;
 	font-family:MicrosoftYaHei;
 }
 
@@ -83,7 +83,7 @@ header{
 /*中间main*/
 .main{
 	padding: 40px 23% 10px 23%;
-	min-height: 400px;
+	min-height: 500px;
 }
 
 /*面包屑导航*/

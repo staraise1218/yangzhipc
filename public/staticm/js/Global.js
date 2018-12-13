@@ -9,13 +9,13 @@ var Global = (function () {
         <div class="openDiv" style="display: none;">
           <ul>
             <li>
-              <a href="trainingProgram.html">项目培训</a>
+              <a href="/index.php/mobile/project/index">项目培训</a>
             </li>
             <li>
-              <a href="trainingVideo.html">培训视频</a>
+              <a href="/index.php/mobile/video/index">培训视频</a>
             </li>
             <li>
-              <a href="signup.html">联系我们</a>
+              <a href="/index.php/mobile/contact/index">联系我们</a>
             </li>
           </ul>
         </div>

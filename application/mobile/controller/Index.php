@@ -30,14 +30,12 @@ class Index extends Frontend
         // 热门项目
         $project = Db::name('project')->where('is_delete', 0)->order('id desc')->limit(4)->select();
          // 培训视频
-        $video = Db::name('video')
-            ->where($where)
-            ->field('id, title, thumbimage')
-            ->order('id desc');
+        $video = Db::name('video')->where('is_delete', 0)->order('id desc')->select(2);
 
         $this->assign('adList', $adList);
         $this->assign('knowledge', $knowledge);
         $this->assign('project', $project);
+        $this->assign('video', $video);
         // $this->assign('', $);
         return $this->view->fetch();
     }

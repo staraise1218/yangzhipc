@@ -1,100 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>培训项目</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/common.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/project.css">
-	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+  <meta charset="UTF-8">
+  <title>培训项目</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
+  </script>
 
+  <link rel="stylesheet" href="/staticm/css/weui.css">
+  <link rel="stylesheet" href="/staticm/js/js-build/jquery-weui-build/dist/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="/staticm/css/common.css">
+
+  <script src="/staticm/js/js-build/jquery-3.1.1.min.js"></script>
+  <script src="/staticm/js/js-build/jquery-weui-build/dist/js/jquery-weui.min.js"></script>
+  <script src="/staticm/js/Global.js"></script>
+  <link rel="stylesheet" type="text/css" href="/plugin/layui/css/layui.css">
+  <script type="text/javascript" src="/plugin/layui/layui.js"></script>
+  <script type="text/javascript">
+    layui.use('flow', function(){
+      var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+      var flow = layui.flow;
+      flow.load({
+        elem: '#dateWrap', //指定列表容器
+        isAuto: true,
+        mb: 50,
+        end: '没有更多数据',
+        done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+          var lis = [];
+          //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+          $.post('/index.php/mobile/project/index', {page:page}, function(res){
+            res = JSON.parse(res);
+            //假设你的列表返回在data集合中
+            layui.each(res.list, function(index, item){
+              
+              var html = '';
+              html += '<div class="dateContent">';
+              html +=     '<h5 class="flexCenter">';
+              html +=         '<span class="dateContentTitle">'+item.title+'</span>';
+              html +=         '<span class="date">'+item.createtime+'</span>';
+              html +=     '</h5>';
+              html +=     '<p>'+item.description+'</p>';
+              html += '</div>';
+
+              lis.push(html);
+            }); 
+            //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+            //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+            next(lis.join(''), page < res.pages);  
+          });
+        }
+      }); 
+    });
+  </script>
 </head>
-<body>
-	<!-- 顶部菜单 -->
-	{include file="common/header"}
-	<!-- 轮播图 -->
-    <div id="myCarousel" class="carousel slide">
-        <!-- 轮播（Carousel）指标 -->
-        <ol class="carousel-indicators">
-            {foreach name="adList" item="item" key="k"}
-            <li data-target="#myCarousel" data-slide-to="{$k}" {$k==0 ? ' class="active"' : ''}></li>
-            {/foreach}
-        </ol>   
-        <!-- 轮播（Carousel）项目 -->
-        <div class="carousel-inner">
-            {foreach name="adList" item="item" key="k"}
-            <div class="item {$k == 0 ? 'active' : ''}">
-                <a href="{$item.link ? $item.link : 'javascript:;'}"><img src="{$item.image}" alt="{$item.title}"></a>
+
+<body style="background-color: #fff;">
+  <!-- 头 -->
+  {include file="common/header"}
+
+  <!-- 培训项目 -->
+  <div class="container">
+    <div class="flexCenter containerHead">
+      <span class="containerHeadText">培训项目</span>
+    </div>
+
+    <div class="dateWrap" id="dateWrap">
+    	<!-- {foreach name="list" item="item"}
+            <div class="dateContent">
+              <h5 class="flexCenter">
+                <span class="dateContentTitle">{$item.title}</span>
+                <span class="date">{$item.createtime}</span>
+              </h5>
+              <p>{$item.description}</p>
             </div>
-            {/foreach}
-        </div>
-        <!-- 轮播（Carousel）导航 -->
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div> 
-	<!-- 中间主要内容 -->
-	<div class="main">
-		<h3 class="more_title">培训项目</h3>
-		<div class="project">
-			<!-- 标题 -->
-			<div class="project_title project_flex">
-				<div class="project_l">{:substr($now_month, 0, 4)}年{:substr($now_month, 4)}月</div>
-				<a href="{:url('index/project/all')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
-			</div>
+            {/foreach} -->
+    </div>
 
-			<ul class="project_ul">
-				{foreach name="nowMonthProjectList" item="nowMonthProject"}
-				<li>
-					<a href="{:url('index/project/detail', array('id'=>$nowMonthProject.id))}">
-						<div class="project_item_l">
-							<div class="project_big">{:date('d', $nowMonthProject['createtime'])}</div>
-							<div class="project_small">{:date('Y-m', $nowMonthProject['createtime'])}</div>
-						</div>
-						<div class="project_item_r">
-							<div class="project_item_title">{$nowMonthProject.title}</div>
-							<div class="project_item_word">{$nowMonthProject.description}</div>
-						</div>
-					</a>
-				</li>
-				{/foreach}
-			</ul>
-		</div>
-		<div class="project">
-			<!-- 标题 -->
-			<div class="project_title project_flex">
-				<div class="project_l">{:substr($pre_month, 0, 4)}年{:substr($pre_month, 4)}月</div>
-				<a href="{:url('index/project/all')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
-			</div>
 
-			<ul class="project_ul">
-				{foreach name="preMonthProjectList" item="preMonthProject"}
-				<li>
-					<a href="{:url('index/project/detail', array('id'=>$preMonthProject.id))}">
-						<div class="project_item_l">
-							<div class="project_big">{:date('d', $preMonthProject['createtime'])}</div>
-							<div class="project_small">{:date('Y-m', $preMonthProject['createtime'])}</div>
-						</div>
-						<div class="project_item_r">
-							<div class="project_item_title">{$preMonthProject.title}</div>
-							<div class="project_item_word">{$preMonthProject.description}</div>
-						</div>
-					</a>
-				</li>
-				{/foreach}
-			</ul>
-		</div>
-	</div>
-
-	<!-- 底部 -->
-	{include file="common/footer"}
 </body>
+
 </html>

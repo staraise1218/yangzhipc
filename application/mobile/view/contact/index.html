@@ -1,34 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>联系我们</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/common.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/index_detail.css">
-	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+  <meta charset="UTF-8">
+  <title>培训项目</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
+  </script>
+
+  <link rel="stylesheet" href="/staticm/css/weui.css">
+  <link rel="stylesheet" href="/staticm/js/js-build/jquery-weui-build/dist/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="/staticm/css/common.css">
+  <script src="/staticm/js/js-build/jquery-3.1.1.min.js"></script>
+  <script src="/staticm/js/js-build/jquery-weui-build/dist/js/jquery-weui.min.js"></script>
+  <script src="/staticm/js/Global.js"></script>
 
 </head>
-<body>
-	<!-- 顶部菜单 -->
-	{include file="common/header"}
-	<!-- 面包屑导航 -->
-	<ul class="bread breadcrumb">
-	    <li><a href="/">首页</a></li>
-	    <li class="active"><a href="javascript:;">联系我们</a></li>
-	</ul>
-	<!-- 中间主要内容 -->
-	<div class="main">
-		<h3 class="more_title">{$info.title}</h3>
-		<div>
-			<div class="detail_word">{$info.content}</div>
-		</div>
-	</div>
 
-	<!-- 底部 -->
-	{include file="common/footer"}
+<body style="background-color: #fff;">
+  <!-- 头 -->
+  {include file="common/header"}
+
+  <!-- 培训项目 -->
+  <div class="container">
+    <div class="flexCenter containerHead">
+      <span class="containerHeadText">联系我们</span>
+    </div>
+
+    <div class="pageContainer">
+        {$info.content}
+    </div>
+
 </body>
+
 </html>

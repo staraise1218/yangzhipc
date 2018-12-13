@@ -2,14 +2,15 @@
         <div class="header_logo">LOGO</div>
         <ul class="header_ul">
             <li {if condition="CONTROLLER_NAME eq 'Index'"}class="header_ul_act"{/if}><a href="/">首页</a></li>
+            <li {if condition="CONTROLLER_NAME eq 'About'"}class="header_ul_act"{/if}><a href="{:url('index/about/index')}">关于我们</a></li>
             <li {if condition="CONTROLLER_NAME eq 'Project'"}class="header_ul_act"{/if}>
                 <a href="{:url('index/project/index')}">项目与服务</a>
                 <ul class="header_ul_sel">
-                    <li><a href="{:url('index/project/index')}">培训项目</a></li>
-                    <li><a href="{:url('index/project/page', array('id'=>1))}">专业咨询</a></li>
+                    <!-- <li><a href="{:url('index/project/index')}">培训项目</a></li> -->
                     <li><a href="{:url('index/project/page', array('id'=>2))}">专业培训</a></li>
+                    <li><a href="{:url('index/project/page', array('id'=>1))}">专业咨询</a></li>
                     <li><a href="{:url('index/project/page', array('id'=>3))}">国际商务</a></li>
-                    <li><a href="{:url('index/project/page', array('id'=>4))}">参与学习</a></li>
+                    <li><a href="{:url('index/project/page', array('id'=>4))}">参观学习</a></li>
                 </ul>
             </li>
             <li {if condition="CONTROLLER_NAME eq 'Study'"}class="header_ul_act"{/if}>
@@ -30,7 +31,6 @@
                     <li><a href="{:url('index/resource/partner')}">合作伙伴</a></li>
                 </ul>
             </li>
-            <li {if condition="CONTROLLER_NAME eq 'About'"}class="header_ul_act"{/if}><a href="{:url('index/about/index')}">关于我们</a></li>
             <li {if condition="CONTROLLER_NAME eq 'Contact'"}class="header_ul_act"{/if}><a href="{:url('index/contact/index')}">联系我们</a></li>
         </ul>
         <div class="header_login">

@@ -1,65 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>登录</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/common.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/login.css">
-    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+  <meta charset="UTF-8">
+  <title>登录</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
+  </script>
 
+  <link rel="stylesheet" href="/staticm/css/common.css">
+  <link rel="stylesheet" href="/staticm/css/register.css">
+
+
+  <script src="/staticm/js/js-build/jquery-3.1.1.min.js"></script>
+  <script src="/staticm/js/Global.js"></script>
 </head>
-<body>
-    <!-- 顶部菜单 -->
-    <!-- {include file="common/header"} -->
-    <!-- 中间主要内容 -->
-    <div class="main-content">
-        <div class="main-con-wrap">
-            <ul class="main-con-rub">
-                <li><a href="#">会员中心</a></li>
-                <li class=""><a href="#">登录账号</a></li>
-            </ul>
-            <div class="login">
-                <h5>登录账号</h5>
-                <form id="loginform" action="{:url('index/user/login')}" method="post">
-                    <div class="in-item">
-                        <span>手机</span>
-                        <input type="text" name="account" id="account" placeholder="请输入手机号">
-                    </div>
-                    <div class="in-item">
-                        <span>密码</span>
-                        <input type="text" name="password" id="password" placeholder="请输入密码">
-                    </div>
-                    <div class="in-link">
-                        <a href="{:url('index/user/register')}">注册账号</a>
-                        <a href="{:url('index/user/forgetpwd')}">忘记密码</a>
-                    </div>
-                    <button type="button" onClick="checkSubmit();">登录</button>
 
-                    <input type="hidden" name="url" value="{$url}" />
-                    {:token()}
-                </form>
-            </div>
-        </div>
+<body class="register">
+  <!-- 头 -->
+  {include file="common/header"}
+
+  <div class="flexColumn">
+    <!-- logo -->
+    <div class="flexColumn logoWrap">
+      <div class="logo">
+        <img src="/staticm/images/timg.jpg" alt="logo">
+      </div>
+      <p>logo名称</p>
     </div>
-    <!-- 底部 -->
-    {include file="common/footer"}
 
-    <script type="text/javascript" src="/statics/layer/layer.js"></script>
+    <!-- form -->
+    <div>
+      <form id="loginform" action="">
+        <div class="flexCenter registerItem">
+          <img class="itemIcon" src="/staticm/images/手机号@2x.png" alt="icon">
+          <input type="text" id="account" name="account" placeholder="请输入手机号">
+        </div>
+        <div class="flexCenter registerItem">
+          <img class="itemIcon" src="/staticm/images/密码@2x.png" alt="icon">
+          <input type="password" id="password" name="password" placeholder="请输入密码">
+          <span class="showPsword"></span>
+        </div>
+      </form>
+
+      <div class="btnBox-register">
+        <button class="mBtn" type="button" onclick="checkSubmit()">登录</button>
+      </div>
+    </div>
+    <!-- form end -->
+
+    <p class="logTip">
+        <span><a href="{:url('mobile/user/register')}">立即注册</a></span>
+        <!-- &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+        <span><a href="#">忘记密码</a></span> -->
+    </p>
+  </div>
+
+<script type="text/javascript" src="/statics/layer/layer.js"></script>
 <script type="text/javascript">
-    $(function(){
-        $('.text_cmu').focus(function(){
-            //焦点获取
-            $(this).parents('.text_uspa').addClass('text_uspa_focus');
-        })
-        $('.text_cmu').blur(function(){
-            //失去焦点
-            $(this).parents('.text_uspa').removeClass('text_uspa_focus');
-        })
-    })
 
     function checkSubmit()
     {
@@ -67,33 +66,36 @@
         var password = $.trim($('#password').val());
 
         if(account == ''){
-            showErrorMsg('手机号不能为空!');
+            layer.msg('手机号不能为空!');
             return false;
         }
         if(!checkMobile(account) && !checkEmail(account)){
-            showErrorMsg('手机号格式不正确!');
+            layer.msg('手机号格式不正确!');
             return false;
         }
         if(password == ''){
-            showErrorMsg('密码不能为空!');
+            layer.msg('密码不能为空!');
             return false;
         }
+
+        layer.load(2);
         $.ajax({
             type : 'post',
-            url : '/index.php/Index/User/login/t/'+Math.random(),
+            url : '/index.php/mobile/User/login/t/'+Math.random(),
             data : $('#loginform').serialize(),
             dataType : 'json',
             success : function(res){
+                layer.closeAll('loading');
                 if(res.code == 1){
                     layer.msg('登录成功', {icon:1}, function(){
-                        window.location.href = "{:url('index/user/index')}";
+                        window.location.href = "{:url('mobile/user/index')}";
                     })
                 }else{
-                    showErrorMsg(res.msg);
+                    layer.msg(res.msg);
                 }
             },
             error : function(XMLHttpRequest, textStatus, errorThrown) {
-                showErrorMsg('网络失败，请刷新页面后重试');
+                layer.msg('网络失败，请刷新页面后重试');
             }
         })
 
@@ -118,10 +120,6 @@
         }
     }
 
-    function showErrorMsg(msg){
-        layer.msg(msg, {icon: 2});
-    }
-
     //回车提交
     $(document).keyup(function(event){
         if(event.keyCode ==13){
@@ -133,4 +131,5 @@
     });
 </script>
 </body>
+
 </html>
