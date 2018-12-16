@@ -80,7 +80,7 @@
 
 .index_content_ul li{
 	width: 100%;
-	padding-top: 10px;
+	padding-top: 16px;
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: nowrap;
@@ -111,3 +111,8 @@
     top: 35%;
     width: 80px;
 }
+
+
+.index_partner_container {width: 480px;}
+.index_partner_content {width: 480px; overflow: hidden;}
+.index_partner_content img {width: 150px; margin-top: 20px; float: left; margin-right: 10px;}

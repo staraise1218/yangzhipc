@@ -123,29 +123,18 @@
 
             <!-- 项目推荐 -->
             <!-- 标题 -->
-            <div class="index_title index_flex">
-                <div class="index_title_l">行业会展</div>
+            <div class="index_title index_flex index_partner_container">
+                <div class="index_title_l">合作伙伴</div>
                 <a href="{:url('index/resource/exhibition')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
             </div>
             <!-- 内容 -->
-            <div class="index_content">
-                <div class="index_position index_flex">
-                    <div class="index_l"><img src="{$exhibition[0]['thumbimage']}"></div>
-                    <div class="index_r">
-                        <div><a class="index_content_title" href="{:url('index/resource/exhibition', array('id'=>$exhibition[0]['id']))}">{$exhibition[0]['title']}</a></div>
-                        <div class="index_content_div index_small">
-                            {$exhibition[0]['description']}
-                        </div>
-                        <div class="index_content_date index_small">{:date('Y-m-d', $exhibition[0]['createtime'])}</div>
-                    </div>
-                </div>
-                <ul class="index_content_ul">
-                    {foreach name="exhibition" item="item" key="k"}
-                    <?php if($k<1){continue;}?>
-                    <li><a class="over" href="{:url('index/resource/exhibitiondetail', array('id'=>$item.id))}">{$item.title}</a> <span class="index_small">{:date('Y-m-d', $item.createtime)}</span></li>
-                    {/foreach}
-
-                </ul>
+            <div class="index_partner_content">
+                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
+                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
+                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
+                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
+                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
+                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
             </div>
         </div>
     </div>
