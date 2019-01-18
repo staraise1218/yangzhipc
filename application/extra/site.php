@@ -24,8 +24,6 @@ return array (
     'basic' => 'Basic',
     'email' => 'Email',
     'dictionary' => 'Dictionary',
-    'user' => 'User',
-    'example' => 'Example',
     'fragment' => '碎片管理',
   ),
   'mail_type' => '1',
