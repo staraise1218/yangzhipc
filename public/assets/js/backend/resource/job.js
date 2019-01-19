@@ -32,7 +32,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'experience', title: __('Experience')},
                         {field: 'salary', title: __('Salary')},
                         {field: 'place', title: __('Place')},
-                        {field: 'characteristics', title: __('Characteristics')},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
