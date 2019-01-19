@@ -26,4 +26,13 @@ class About extends Frontend
         $this->assign('info', $info);
         return $this->fetch();
     }
+
+    public function member(){
+        $info = Db::name('page')
+            ->where('id', 8)
+            ->find();
+
+        $this->assign('info', $info);
+        return $this->fetch();
+    }
  }
