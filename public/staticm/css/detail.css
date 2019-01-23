@@ -1,0 +1,80 @@
+/* ???? */
+.limitLine2{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.limitLine3{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.limitLine4{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+.limitLine5{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+/* ????? */
+.textOmit{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================== */
+body{
+  min-height: 100vh;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+}
+.container{
+  flex: 1 0 0;
+}
+.detail_title{
+  display: flex;
+  display: -webkit-flex;
+  align-items: flex-start;
+  padding: 0.1rem 0;
+}
+.detail_date{
+  font-size: 0.12rem;
+  color: rgba(128, 128, 128, 1);
+}
+.detail_title .detailBtn{
+  white-space:nowrap;
+  margin-left: 0.1rem;
+}
+.detail_title .detailBtn .mBtn{
+  padding: 0.04rem 0.1rem;
+}
+.detail_content{
+  text-indent: 2em;
+}
+.detail_content p{
+  color: rgba(128, 128, 128, 1);
+}
+
+/* 视频 */
+.videoWrap{
+  width: 100%;
+  height: 2.1rem;
+  font-size: 0;
+  padding: 0;
+  margin-bottom: 0.1rem;
+}
+.video{
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+

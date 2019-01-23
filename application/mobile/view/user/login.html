@@ -45,16 +45,12 @@
       </form>
 
       <div class="btnBox-register">
-        <button class="mBtn" type="button" onclick="checkSubmit()">登录</button>
+        <button class="mBtn" onclick="checkSubmit()">登录</button>
       </div>
     </div>
     <!-- form end -->
 
-    <p class="logTip">
-        <span><a href="{:url('mobile/user/register')}">立即注册</a></span>
-        <!-- &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-        <span><a href="#">忘记密码</a></span> -->
-    </p>
+    <p class="logTip"><span><a href="{:url('mobile/user/register')}">立即注册</a></span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">忘记密码</a></span></p>
   </div>
 
 <script type="text/javascript" src="/statics/layer/layer.js"></script>
@@ -66,36 +62,33 @@
         var password = $.trim($('#password').val());
 
         if(account == ''){
-            layer.msg('手机号不能为空!');
+            showErrorMsg('手机号不能为空!');
             return false;
         }
         if(!checkMobile(account) && !checkEmail(account)){
-            layer.msg('手机号格式不正确!');
+            showErrorMsg('手机号格式不正确!');
             return false;
         }
         if(password == ''){
-            layer.msg('密码不能为空!');
+            showErrorMsg('密码不能为空!');
             return false;
         }
-
-        layer.load(2);
         $.ajax({
             type : 'post',
-            url : '/index.php/mobile/User/login/t/'+Math.random(),
+            url : "{:url('mobile/user/login')}",
             data : $('#loginform').serialize(),
             dataType : 'json',
             success : function(res){
-                layer.closeAll('loading');
                 if(res.code == 1){
                     layer.msg('登录成功', {icon:1}, function(){
                         window.location.href = "{:url('mobile/user/index')}";
                     })
                 }else{
-                    layer.msg(res.msg);
+                    showErrorMsg(res.msg);
                 }
             },
             error : function(XMLHttpRequest, textStatus, errorThrown) {
-                layer.msg('网络失败，请刷新页面后重试');
+                showErrorMsg('网络失败，请刷新页面后重试');
             }
         })
 
@@ -120,15 +113,9 @@
         }
     }
 
-    //回车提交
-    $(document).keyup(function(event){
-        if(event.keyCode ==13){
-            var isFocus=$("#verify_code").is(":focus");
-            if(true==isFocus){
-                checkSubmit();
-            }
-        }
-    });
+    function showErrorMsg(msg){
+        layer.msg(msg, {icon: 2});
+    }
 </script>
 </body>
 

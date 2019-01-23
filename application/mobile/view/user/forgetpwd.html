@@ -1,59 +1,73 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>养殖平台官网-全部推荐</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/common.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/forget.css">
-	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/statics/js/bootstrap.js"></script>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <title>注册</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
+  </script>
+
+  <link rel="stylesheet" href="/staticm/css/common.css">
+  <link rel="stylesheet" href="/staticm/css/register.css">
+
+
+  <script src="/staticm/js/js-build/jquery-3.1.1.min.js"></script>
+  <script src="/staticm/js/Global.js"></script>
 </head>
-<body>
-	<!-- 顶部菜单 -->
-	{include file="common/header"}
-	<!-- 中间主要内容 -->
-	<div class="main-content">
-		<div class="main-con-wrap">
-			<ul class="main-con-rub">
-			    <li><a href="#">会员中心</a></li>
-			    <li class=""><a href="#">忘记密码</a></li>
-			</ul>
-			<div class="forget">
-				<h5>忘记密码</h5>
-				<form id="registerform" method="POST">
-					<div class="in-item">
-						<span>手机</span>
-						<input type="text" name="mobile" id="mobile" placeholder="请输入手机号">
-					</div>
-					<div class="in-item">
-						<span>验证码</span>
-						<div class="in-item-cap">
-							<input type="text" name="code" id="code" placeholder="请输入验证码" class="in-item-cap-inp">
-							<span>获取验证码</span>
-						</div>
-					</div>
-					<div class="in-item">
-						<span>密码</span>
-						<input type="text" name="password" id="password" placeholder="请输入密码">
-					</div>
-					<div class="in-item">
-						<span>新密码</span>
-						<input type="text" name="newpassword" id="newpassword" placeholder="请输入新密码">
-					</div>
-					<button type="button" onclick="check_submit()">确定</button>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- 底部 -->
-	{include file="common/footer"}
+
+<body class="register">
+  <!-- 头 -->
+  {include file="common/header"}
+
+  <div class="flexColumn">
+    <!-- logo -->
+    <div class="flexColumn logoWrap">
+      <div class="logo">
+        <img src="/staticm/images/timg.jpg" alt="logo">
+      </div>
+      <p>logo名称</p>
+    </div>
+
+    <!-- form -->
+    <div>
+      <form action="">
+        <div class="flexCenter registerItem">
+          <img class="itemIcon" src="/staticm/images/手机号@2x.png" alt="icon">
+          <input type="text" placeholder="请输入手机号">
+        </div>
+        <div class="flexCenter registerItem">
+          <img class="itemIcon" src="/staticm/images/验证@2x.png" alt="icon">
+          <input type="text" placeholder="请输入验证码">
+          <span class="getCode">获取验证码</span>
+        </div>
+        <div class="flexCenter registerItem">
+          <img class="itemIcon" src="/staticm/images/密码@2x.png" alt="icon">
+          <input type="password" placeholder="请输入新密码">
+          <span class="showPsword"></span>
+        </div>
+        <div class="flexCenter registerItem">
+          <img class="itemIcon" src="/staticm/images/密码@2x.png" alt="icon">
+          <input type="password" placeholder="再次确认密码">
+          <span class="showPsword"></span>
+        </div>
+      </form>
+
+      <div class="btnBox-register">
+        <button class="mBtn">修改密码</button>
+      </div>
+    </div>
+    <!-- form end -->
+
+    <div class="goLogin">
+      已有账号&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="{:url('mobile/user/login')}">去登录</a></span>
+    </div>
+  </div>
+
 <script type="text/javascript" src="/statics/layer/layer.js"></script>
 <script type="text/javascript">
-	function check_submit(){
+    function check_submit(){
         var mobile = $.trim($('#mobile').val());
         var password = $.trim($('#password').val());
         var newpassword = $.trim($('#newpassword').val());
@@ -141,4 +155,5 @@
     };
 </script>
 </body>
+
 </html>

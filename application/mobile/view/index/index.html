@@ -44,10 +44,11 @@
   <div class="container">
     <div class="flexCenter containerHead">
       <span class="containerHeadText">行业知识</span>
-      <span class="more" onclick="window.location=''">更多</span>
+      <span class="more">更多</span>
+       <!-- onclick="window.location='{:url('mobile/study/knowledgeAll')}'" -->
     </div>
 
-    <div class="flexCenter picTextItem">
+    <div class="flexCenter picTextItem"  onclick="window.location='{:url('mobile/study/knowledgeDetail', array('id'=>$knowledge[0]['id']))}'">
       <img src="{$knowledge[0]['thumbimage']}" alt="图片">
       <div>
         <h5>{$knowledge[0]['title']}</h5>
@@ -57,7 +58,7 @@
     </div>
     {foreach name="$knowledge" item="item" key="k"}
     <?php if($k==0) continue;?>
-    <div class="textItem">
+    <div class="textItem"  onclick="window.location='{:url('mobile/study/knowledgeDetail', array('id'=>$item['id']))}'">
       <p>{$item.title}</p>
       <span class="date">{:date('Y-m-d', $item.createtime)}</span>
     </div>
@@ -87,7 +88,7 @@
 
     <div class="dateWrap">
         {foreach name="project" item="item"}
-        <div class="dateContent">
+        <div class="dateContent" onclick="window.location='{:url('mobile/project/detail', array('id'=>$item.id))}'">
             <h5 class="flexCenter">
                 <span class="dateContentTitle">{$item.title}</span>
                 <span class="date">{:date('Y-m-d', $item.createtime)}</span>
@@ -101,10 +102,10 @@
   <div class="container trainingVideo">
     <div class="flexCenter containerHead">
       <span class="containerHeadText">培训视频</span>
-      <span class="more">更多</span>
+      <span class="more" onclick="window.location='{:url('mobile/video/index')}'">更多</span>
     </div>
     {foreach name="video" item="item"}
-    <div class="flexCenter posiRe picTextItem">
+    <div class="flexCenter posiRe picTextItem" onclick="window.location='{:url('mobile/video/detail', array('id'=>$item.id))}'">
       <img src="{$item.thumbimage}" alt="图片">
       <div>
         <h5>{$item.title}</h5>

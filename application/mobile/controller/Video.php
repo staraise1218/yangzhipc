@@ -49,29 +49,80 @@ class Video extends Frontend
     }
 
     public function detail(){
+        $user_id = $this->auth->id;
+
     	$id = input('id');
 
-    	$info = Db::name('project')
+    	$info = Db::name('video')
     		->where('id', $id)
     		->where('is_delete', 0)
     		->find();
 
-    	$this->assign('info', $info);
+        $is_buyed = 0;
+        if($info['price'] == 0){
+            $is_buyed = 1;
+        } else {
+            if($user_id){
+                $count = Db::name('video_order')->where('user_id', $user_id)
+                    ->where('video_id', $id)
+                    ->where('paystatus', 1)
+                    ->count();
+                $is_buyed = $count > 0 ? 1 : 0;
+            } else {
+                $is_buyed = 0;
+            }
+        }
+
+        $this->assign('info', $info);
+        $this->assign('is_buyed', $is_buyed);
     	return $this->fetch();
     }
-    
-    public function enroll(){
-    	$project_id = input('project_id');
 
-    	if($this->request->isPost()){
-    		$params = input('post.');
-    		if(Db::name('project_enroll')->insert($params)){
-    			die(json_encode(array('status'=>1, 'msg'=>'报名成功')));
-    		} else {
-    			die(json_encode(array('status'=>0, 'msg'=>'报名失败')));
-    		}
-    	}
-    	$this->assign('project_id', $project_id);
-    	return $this->fetch();
+    public function submitOrder(){
+        $video_id = input('video_id');
+        $user_id = $this->auth->id;
+
+        if($user_id == '') die(json_encode(array('code'=>400, 'msg'=>'请先登录')));
+
+        // 检测数据是否存在
+        $video = Db::name('video')
+            ->where('id', $video_id)
+            ->find();
+        if(empty($video)) die(json_encode(array('code'=>400, 'msg'=>'数据不存在')));
+
+        // 检测是否已购买
+        $count = Db::name('video_order')
+            ->where('user_id', $user_id)
+            ->where('video_id', $video_id)
+            ->count();
+        if($count) die(json_encode(array('code'=>400, 'msg'=>'您已购买')));
+
+        $order_sn = $this->generateOrderSn();
+        $data = array(
+            'video_id' => $video_id,
+            'price' => $video['price'],
+            'user_id' => $user_id,
+            'order_sn' => $order_sn,
+            'createtime' => time(),
+        );
+
+        if(Db::name('video_order')->insert($data)){
+            $resultData = array(
+                'order_sn' => $order_sn,
+            );
+            die(json_encode(array('code'=>200, 'msg'=>'下单成功')));
+        } else {
+            die(json_encode(array('code'=>400, 'msg'=>'下单失败')));
+        }
+    }
+
+
+    public function generateOrderSn(){
+        $order_sn = date('YmdHis').mt_rand(1000, 9999);
+
+        $count = Db::name('video_order')->where('order_sn', $order_sn)->count();
+        if($count) $this->generateOrderSn();
+
+        return $order_sn;
     }
  }

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>项目详情</title>
+  <title>视频详情</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <script type="text/javascript">
     document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
@@ -28,14 +28,18 @@
         <h3 class="limitLine2">{$info.title}</h3>
         <!-- <span class="detail_date">2011-11-11</span> -->
       </div>
+      {if condition="($is_buyed eq 0) && ($info['price'] > 0)"}
       <div class="detailBtn">
-          <button class="mBtn" onclick="window.location='{:url('mobile/project/enroll',array('project_id'=>$info.id))}'">活动报名</button>
+          <button class="mBtn buybtn">购买</button>
       </div>
+      {/if}
     </div>
     <!-- 视频 -->
-    <!-- <div class="videoWrap posiRe">
-      <video class="video positionCenter" src="" poster="" controls></video>
-    </div> -->
+    {if condition="$is_buyed eq 1"}
+    <div class="videoWrap posiRe">
+      <video class="video positionCenter" src="{$info.video}" poster="" controls></video>
+    </div>
+    {/if}
     <!-- 内容 -->
     <div class="detail_content">
       {$info.content}
@@ -45,6 +49,27 @@
 
   <!-- footer -->
   {include file="common/footer"}
+  <script type="text/javascript" src="/statics/layer/layer.js"></script>
+  <script type="text/javascript">
+      $('.buybtn').click(function(){
+          var video_id = "{$info.id}";
+          layer.load(1);
+          $.ajax({
+            url: "{:url('mobile/video/submitOrder')}",
+            type: 'post',
+            dataType: 'json',
+            data: {video_id: video_id},
+            success:function(data){
+                layer.closeAll();
+                if(data.code == 400){
+                    layer.msg(data.msg);
+                } else {
+                    layer.msg('下单成功');
+                }
+            }
+          })
+      })
+  </script>
 </body>
 
 </html>

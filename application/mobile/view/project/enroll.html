@@ -1,61 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>网上报名</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/common.css">
-	<link rel="stylesheet" type="text/css" href="/statics/css/project_enroll.css">
-	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/statics/js/bootstrap.js"></script>
-	<script type="text/javascript" src="/statics/layer/layer.js"></script>
+  <meta charset="UTF-8">
+  <title>网上报名</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
+  </script>
 
+  <link rel="stylesheet" href="/staticm/css/common.css">
+
+  <script src="/staticm/js/js-build/jquery-3.1.1.min.js"></script>
+  <script src="/staticm/js/Global.js"></script>
 </head>
+
 <body>
-	<!-- 顶部菜单 -->
-	{include file="common/header"}
-	<!-- 面包屑导航 -->
-	<ul class="bread breadcrumb">
-	    <li><a href="#">项目与服务</a></li>
-	    <li><a href="#">专业培训</a></li>
-	    <li><a href="#">项目介绍</a></li>
-	    <li class="active"><a href="#">网上报名</a></li>
-	</ul>
-	<!-- 中间主要内容 -->
-	<div class="main">
-		<h3 class="more_title">联系方式</h3>
-		<ul class="enroll_ul">
-			<li><span class="enroll_ul_name">公司名称</span> <span class="enroll_ul_content">北京养殖有限公司</span></li>
-			<li><span class="enroll_ul_name">公司地址</span> <span class="enroll_ul_content">北京海东城区青龙胡同112号广业大厦B座</span></li>
-			<li><span class="enroll_ul_name">固定电话</span> <span class="enroll_ul_content">86-010-88244217</span></li>
-			<li><span class="enroll_ul_name">固定电话</span> <span class="enroll_ul_content">未提供</span></li>
-			<li><span class="enroll_ul_name">邮政编码</span> <span class="enroll_ul_content">100007</span></li>
-		</ul>
+  <!-- 头 -->
+  {include file="common/header"}
 
-		<h3 class="more_title">报名信息</h3>
-		<form id="enrollForm" action="{:url('index/project/enroll')}" method="post">
-		<ul class="enroll_ul">
-			<li><span class="enroll_ul_name">公司名称</span> <input class="enroll_ul_input" type="text" name="company_name" placeholder="请输入公司名称"></li>
-			<li><span class="enroll_ul_name">公司地址</span> <input class="enroll_ul_input" type="text" name="company_address" placeholder="请输入公司地址"></li>
-			<li><span class="enroll_ul_name">姓名</span> <input class="enroll_ul_input" type="text" name="fullname" placeholder="请输入姓名"></li>
-			<li><span class="enroll_ul_name">电话</span> <input class="enroll_ul_input" type="text" name="phone" placeholder="请输入电话"></li>
-			<li><span class="enroll_ul_name">邮箱</span> <input class="enroll_ul_input" type="text" name="email" placeholder="请输入邮箱"></li>
-			<li><span class="enroll_ul_name">职位</span> <input class="enroll_ul_input" type="text" name="position" placeholder="请输入职位"></li>
-			<li><span class="enroll_ul_name">专业</span> <input class="enroll_ul_input" type="text" name="profession" placeholder="请输入专业"></li>
-		</ul>
-		
-		<div class="enroll_btn ac"><button type="button" class="common_btn">提交信息</button></div>
+  <!-- 联系方式 -->
+  <div class="container">
+    <div class="flexCenter containerHead">
+      <span class="containerHeadText">联系方式</span>
+    </div>
+
+    <div class="flexCenter inputItem">
+      <span>公司名称</span>
+      <input type="text" value="北京养殖有限公司">
+    </div>
+    <div class="flexCenter inputItem">
+      <span>公司地址</span>
+      <input type="text" value="北京海东城区青龙胡同112号广业大厦B座">
+    </div>
+    <div class="flexCenter inputItem">
+      <span>固定电话</span>
+      <input type="text" value="86-010-88244217">
+    </div>
+    <div class="flexCenter inputItem">
+      <span>联系人</span>
+      <input type="text" value="未提供">
+    </div>
+    <div class="flexCenter inputItem">
+      <span>邮政编码</span>
+      <input type="text" value="100007">
+    </div>
+  </div>
+
+  <!-- 报名信息 -->
+  <div class="container singupInfo">
+    <div class="flexCenter containerHead">
+      <span class="containerHeadText">报名信息</span>
+    </div>
+	<form id="enrollForm" action="{:url('mobile/project/enroll')}" method="post">
+    <div class="flexCenter inputItem">
+      <span>公司名称</span>
+      <input type="text" name="company_name" value="" placeholder="请输入公司名称">
+    </div>
+    <div class="flexCenter inputItem">
+      <span>公司地址</span>
+      <input type="text" name="company_address" value="" placeholder="请输入公司地址">
+    </div>
+    <div class="flexCenter inputItem">
+      <span>姓名</span>
+      <input type="text" name="fullname" value="" placeholder="请输入姓名">
+    </div>
+    <div class="flexCenter inputItem">
+      <span>电话</span>
+      <input type="text" name="phone" value="" placeholder="请输入电话">
+    </div>
+    <div class="flexCenter inputItem">
+      <span>邮箱</span>
+      <input type="text" name="email" value="" placeholder="请输入邮箱">
+    </div>
+    <div class="flexCenter inputItem">
+      <span>职位</span>
+      <input type="text" name="position" value="" placeholder="请输入职位">
+    </div>
+    <div class="flexCenter inputItem">
+      <span>专业</span>
+      <input type="text" name="profession" value="" placeholder="请输入专业">
+    </div>
+    
 		<input type="hidden" name="project_id" value="{$project_id}">
-		</form>
-	</div>
+</form>
+    <!-- submit btn -->
+    <div class="btnBox">
+      <button class="mBtn submitBtn" type="button">提交信息</button>
+    </div>
+  </div>
 
-	<!-- 底部 -->
-	{include file="common/footer"}
-<script type="text/javascript">
+	<script type="text/javascript" src="/statics/layer/layer.js"></script>
+ <script type="text/javascript">
 	$(function(){
-		$('.common_btn').click(function(){
+		$('.submitBtn').click(function(){
 			var action = $('#enrollForm').attr('action');
 			$.ajax({
 				url: action,
@@ -78,4 +116,5 @@
 	})
 </script>
 </body>
+
 </html>

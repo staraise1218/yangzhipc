@@ -45,12 +45,12 @@
         <div class="flexCenter registerItem">
           <img class="itemIcon" src="/staticm/images/密码@2x.png" alt="icon">
           <input type="password" id="password" name="password" placeholder="请输入密码">
-          <!-- <span class="showPsword"></span> -->
+          <span class="showPsword"></span>
         </div>
         <div class="flexCenter registerItem">
           <img class="itemIcon" src="/staticm/images/密码@2x.png" alt="icon">
           <input type="password" id="password_confirm" name="password_confirm" placeholder="再次确认密码">
-          <!-- <span class="showPsword"></span> -->
+          <span class="showPsword"></span>
         </div>
       </form>
 
@@ -64,7 +64,7 @@
       已有账号&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="{:url('mobile/user/login')}">去登录</a></span>
     </div>
 
-    <!-- <p class="regTip">点击注册代表同意<span>使用协议</span>和<span>隐私策略</span></p> -->
+    <p class="regTip">点击注册代表同意<span>使用协议</span>和<span>隐私策略</span></p>
   </div>
 
 <script type="text/javascript" src="/statics/layer/layer.js"></script>
@@ -76,39 +76,38 @@
         var code = $.trim($('#code').val());
 
         if(mobile == ''){
-            layer.msg('手机号不能为空!');
+            showErrorMsg('手机号不能为空!');
             return false;
         }
         if(!checkMobile(mobile)){
-            layer.msg('手机号格式不正确!');
+            showErrorMsg('手机号格式不正确!');
             return false;
         }
         if(code == ''){
-            layer.msg('验证码不能为空!');
+            showErrorMsg('验证码不能为空!');
             return false;
         }
         if(password == ''){
-            layer.msg('密码不能为空!');
+            showErrorMsg('密码不能为空!');
             return false;
         }
         if(password_confirm != password){
-            layer.msg('两次密码不一致');
+            showErrorMsg('两次密码不一致');
             return false;
         }
-        layer.load(2);
+
         $.ajax({
             type : "POST",
             url:"{:url('mobile/User/register')}",
             dataType: "json",
             data: $('#registerform').serialize(),
             success: function(data){
-                layer.closeAll('loading');
                 if(data.code == 1){
                     layer.msg(data.msg, {icon: 1},function(){
                         window.location.href = "{:url('mobile/user/index')}";
                     });
                 }else{
-                    layer.alert(data.msg, {icon: 2},function(index){
+                    layer.msg(data.msg, {icon: 2},function(index){
                         layer.close(index);
                     });
                 }
@@ -120,16 +119,11 @@
     // 发送手机短信
     function send_sms_reg_code(){
         var mobile = $('input[name="username"]').val();
-        var verify_code = $('input[name="verify_code"]').val();
         if(!checkMobile(mobile)){
             layer.alert('请输入正确的手机号码', {icon: 2});//alert('请输入正确的手机号码');
             return;
         }
-        if(verify_code == ''){
-            layer.alert('请输入图像验证码', {icon: 2});//alert('请输入正确的手机号码');
-            return;
-        }
-        var url = "/index.php?m=Home&c=Api&a=send_validate_code&scene=1&type=mobile&mobile="+mobile+"&verify_code="+verify_code;
+        var url = "/index.php?m=Home&c=Api&a=send_validate_code&scene=1&type=mobile&mobile="+mobile;
         $.ajax({
             url:url,
             dataType: "json",
@@ -146,6 +140,10 @@
                 }
             }
         });
+    }
+
+    function showErrorMsg(msg){
+        layer.msg(msg, {icon: 2});
     }
 
     $('#count_down').removeAttr("disabled");

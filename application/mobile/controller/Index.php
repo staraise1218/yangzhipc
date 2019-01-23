@@ -3,7 +3,6 @@
 namespace app\mobile\controller;
 
 use app\common\controller\Frontend;
-use app\common\library\Token;
 use think\Db;
 
 class Index extends Frontend
