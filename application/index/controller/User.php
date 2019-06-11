@@ -8,6 +8,7 @@ use think\Cookie;
 use think\Hook;
 use think\Session;
 use think\Validate;
+use think\Db;
 
 /**
  * 会员中心
@@ -18,6 +19,8 @@ class User extends Frontend
     protected $layout = '';
     protected $noNeedLogin = ['login', 'register', 'third', 'forgetpwd'];
     protected $noNeedRight = ['*'];
+
+
 
     public function _initialize()
     {
@@ -51,6 +54,11 @@ class User extends Frontend
             Cookie::delete('uid');
             Cookie::delete('token');
         });
+
+
+        $this->user_id = $this->auth->id;
+        $userinfo = Db::name('user')->where('id', $this->user_id)->find();
+        $this->assign('userinfo', $userinfo);
     }
 
     /**
@@ -72,7 +80,17 @@ class User extends Frontend
      */
     public function index()
     {
-        $this->view->assign('title', __('User center'));
+        // 获取我的课程
+        $list = Db::name('video_order')->alias('vo')
+            ->join('video v', 'vo.video_id=v.id')
+            ->where('vo.paystatus', 1)
+            ->where('vo.user_id', $this->user_id)
+            ->field('vo.video_id, vo.price, vo.order_sn, vo.createtime')
+            ->order('vo.id desc')
+            ->paginate(9, false, ['query'=>request()->param()]);
+
+
+        $this->assign('list', $list);
         return $this->view->fetch();
     }
 

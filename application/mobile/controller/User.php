@@ -8,6 +8,7 @@ use think\Cookie;
 use think\Hook;
 use think\Session;
 use think\Validate;
+use think\Db;
 
 /**
  * 会员中心
@@ -51,6 +52,10 @@ class User extends Frontend
             Cookie::delete('uid');
             Cookie::delete('token');
         });
+
+
+        $userinfo = Db::name('user')->where('id', $auth->id)->find();
+        $this->assign('userinfo', $userinfo);
     }
 
     /**
@@ -72,6 +77,7 @@ class User extends Frontend
      */
     public function index()
     {
+
         $this->view->assign('title', __('User center'));
         return $this->view->fetch();
     }
@@ -191,6 +197,12 @@ class User extends Frontend
         }
         $this->view->assign('url', $url);
         return $this->view->fetch();
+    }
+
+    public function changeHeadPic(){
+        $src = input('src');
+        $user_id = $this->auth->id;
+        Db::name('user')->where('id', $user_id)->update(array('avatar'=>$src));
     }
 
     /**

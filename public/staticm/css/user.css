@@ -1,0 +1,84 @@
+.textOmit{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.bgFFF{
+  background-color: #fff;
+}
+.padding15{
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+}
+/* ================================= */
+
+body{
+  background-color: #fff;
+}
+.marginWrap{
+  padding-bottom: 0.08rem;
+  background-color: rgba(246, 246, 246, 1);
+}
+.container{
+  margin: 0;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}
+.headBox{
+  width: 0.44rem;
+  height: 0.44rem;
+  border-radius: 50%;
+  overflow: hidden;
+
+  margin-right: 0.15rem;
+}
+.name{
+  flex: 1 0 0;
+  font-size: 0.16rem;
+  color: rgba(61, 61, 61, 1);
+}
+.icon{
+  width: 0.22rem;
+  height: 0.22rem;
+}
+
+
+.infoItem{
+  justify-content: space-between;
+  font-size: 0.14rem;
+  color: rgba(62, 62, 62, 1);
+  height: 0.5rem;
+  border-bottom: 1px solid rgba(246, 246, 246, 1);
+}
+.infoItem:last-of-type{
+  border-bottom: none;
+}
+.infoItem input{
+  border: none;
+  outline: none;
+  flex: 1 0 0;
+  text-align: right;
+
+  padding-left: 0.15rem;
+}
+
+
+#submitWrap{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+#submit{
+  border: none;
+  outline: none;
+
+  display: block;
+  width: 3.47rem;
+  margin: 0 auto 0.24rem;
+  height: 0.42rem;
+  border-radius: 0.05rem;
+  background: linear-gradient(to right, rgba(250, 109, 109, 1), rgba(246, 80, 80, 1)); /* 标准的语法 */
+  color: #fff;
+  font-size: 0.14rem;
+}

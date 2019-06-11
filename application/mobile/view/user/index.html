@@ -1,114 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>个人中心</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/statics//css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/statics//css/common.css">
-    <link rel="stylesheet" type="text/css" href="/statics//css/index_detail.css">
-    <link rel="stylesheet" type="text/css" href="/statics//css/resource.css">
-    <link rel="stylesheet" type="text/css" href="/statics//css/personal.css">
-    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/statics//js/bootstrap.js"></script>
+  <meta charset="UTF-8">
+  <title>个人中心</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript">
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
+  </script>
 
+  <link rel="stylesheet" href="/staticm/css/common.css">
+  <link rel="stylesheet" href="/staticm/css/user.css">
+
+
+  <script src="/staticm/js/js-build/jquery-3.1.1.min.js"></script>
+  <script src="/staticm/js/Global.js"></script>
 </head>
-<body>
-    <!-- 顶部菜单 -->
-    {include file="common/header"}
-    <!-- 面包屑导航 -->
-    <div class="personal">
-        <ul class="personal_bread breadcrumb">
-            <li><a href="#">资源中心</a></li>
-            <li class="active"><a href="#">工作机会</a></li>
-        </ul>
-        <div class="personal_flex">
-            <div>
-                <img class="personal_img" src="/statics//images/img/img_236_136.png">
-                <span class="personal_name">张三三</span>
-            </div>
-            <div class="personal_qita">
-                <span class="personal_qita_name">手机：</span>
-                <span class="personal_qita_word">{$user.mobile}</span>
-                <!-- <span class="personal_qita_name">邮箱：</span> -->
-                <!-- <span class="personal_qita_word">youhaoren@qq.com</span> -->
-            </div>
-            <!-- <div class="personal_btn"><button class="common_btn">编辑</button></div> -->
-        </div>
-    </div>
-    <!-- 中间主要内容 -->
-    <div class="work main">
-        <h3 class="more_title">我的课程</h3>
-        <ul class="work_ul">
-            <li>
-                <div class="work_ul_title"><img src="/statics//images/icons/kecheng.png"> 法务主管</div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工作经验</div>
-                    <div class="work_ul_word">3-5年</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工资待遇</div>
-                    <div class="work_ul_word">10000-20000</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">公司名称</div>
-                    <div class="work_ul_word">北京好待遇有限公司</div>
-                </div>
-                <div class="work_ul_btn ac"><button class="common_btn">播放</button></div>
-            </li>
-            <li>
-                <div class="work_ul_title"><img src="/statics//images/icons/kecheng.png"> 法务主管</div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工作经验</div>
-                    <div class="work_ul_word">3-5年</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工资待遇</div>
-                    <div class="work_ul_word">10000-20000</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">公司名称</div>
-                    <div class="work_ul_word">北京好待遇有限公司</div>
-                </div>
-                <div class="work_ul_btn ac"><button class="common_btn">播放</button></div>
-            </li>
-            <li>
-                <div class="work_ul_title"><img src="/statics//images/icons/kecheng.png"> 法务主管</div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工作经验</div>
-                    <div class="work_ul_word">3-5年</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工资待遇</div>
-                    <div class="work_ul_word">10000-20000</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">公司名称</div>
-                    <div class="work_ul_word">北京好待遇有限公司</div>
-                </div>
-                <div class="work_ul_btn ac"><button class="common_btn">播放</button></div>
-            </li>
-            <li>
-                <div class="work_ul_title"><img src="/statics//images/icons/kecheng.png"> 法务主管</div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工作经验</div>
-                    <div class="work_ul_word">3-5年</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工资待遇</div>
-                    <div class="work_ul_word">10000-20000</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">公司名称</div>
-                    <div class="work_ul_word">北京好待遇有限公司</div>
-                </div>
-                <div class="work_ul_btn ac"><button class="common_btn">播放</button></div>
-            </li>
-        </ul>
-    </div>
 
-    <!-- 底部 -->
-    {include file="common/footer"}
+<body class="register">
+  <!-- 头 -->
+  {include file="common/header"}
+
+  <!-- 头像 -->
+  <div class="marginWrap">
+    <div class="container flexCenter flexBetween">
+      <div class="headBox">
+        <img class="head_pic" src="{$userinfo.avatar ? $userinfo.avatar : '/staticm/images/default.png'}" alt="">
+      </div>
+      <p class="name textOmit">宋倩茜</p>
+      <!-- <img class="icon" src="/staticm/images/个人中心-进入@2x.png" alt=""> -->
+      <form id="headPicForm" action="{:url('mobile/ajax/upload')}" method="post" enctype="multipart/form-data" style="display: none;">
+        <input type="file" name="file">
+    </form>
+    </div>
+  </div>
+
+  <div class="padding15">
+    <div class="flexCenter infoItem">
+      <span>手机号</span>
+      <input type="number" value="{$userinfo.mobile}">
+    </div>
+    <!-- <div class="flexCenter infoItem">
+      <span>邮箱</span>
+      <input type="email" value="youhaoren@qq.com">
+    </div> -->
+  </div>
+  <div id="submitWrap">
+    <button class="btn" id="submit" type="button" onclick="window.location='{:url('mobile/user/logout')}'">退出登录</button>
+  </div>
+
+    <script type="text/javascript" src="/statics/layer/layer.js"></script>
+    <script src="/staticm/js/jquery.form.js"></script>
+    <script type="text/javascript">
+        <!--头像上传 -->
+        $('.head_pic').click(function(){
+            $('input[name=file]').click()
+        })
+
+        $('input[name=file]').change(function(){
+
+          layer.load(1);
+          $('#headPicForm').ajaxSubmit({
+              dataType: 'json',
+              success:function(data){
+                  layer.closeAll();
+                  if(data.code==1){
+                      $('.head_pic').attr('src', data.data.url);
+                      $.ajax({
+                        url:"{:url('mobile/user/changeHeadPic')}",
+                        type:'post',
+                        data:{src:data.data.url}
+                      })
+                  } else {
+                      layer.msg('上传失败');
+                  }
+
+              },
+              error:function(){
+                  layer.closeAll();
+                  layer.msg('服务器错误');
+              }
+          })
+      })
+    </script>
 </body>
+
 </html>

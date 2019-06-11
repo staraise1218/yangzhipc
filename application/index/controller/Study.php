@@ -171,6 +171,7 @@ class Study extends Frontend
             $count = Db::name('video_order')
                 ->where('video_id', $id)
                 ->where('user_id',$user_id)
+                ->where('paystatus', 1)
                 ->count();
             if($count) $buyed = 1;
         }

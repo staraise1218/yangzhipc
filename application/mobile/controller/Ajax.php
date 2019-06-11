@@ -1,6 +1,6 @@
 <?php
 
-namespace app\index\controller;
+namespace app\mobile\controller;
 
 use app\common\controller\Frontend;
 use think\Lang;

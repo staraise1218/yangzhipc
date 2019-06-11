@@ -25,12 +25,12 @@
         </ul>
         <div class="personal_flex">
             <div>
-                <img class="personal_img" src="/statics//images/img/img_236_136.png">
-                <span class="personal_name">张三三</span>
+                <img class="personal_img" src="{$userinfo.avatar ? $userinfo.avatar : '/staticm/images/default.png'}">
+                <span class="personal_name">{$userinfo.mobile}</span>
             </div>
             <div class="personal_qita">
                 <span class="personal_qita_name">手机：</span>
-                <span class="personal_qita_word">{$user.mobile}</span>
+                <span class="personal_qita_word">{$userinfo.mobile}</span>
                 <!-- <span class="personal_qita_name">邮箱：</span> -->
                 <!-- <span class="personal_qita_word">youhaoren@qq.com</span> -->
             </div>
@@ -41,70 +41,24 @@
     <div class="work main">
         <h3 class="more_title">我的课程</h3>
         <ul class="work_ul">
+            {foreach name="list" item="item"}
             <li>
                 <div class="work_ul_title"><img src="/statics//images/icons/kecheng.png"> 法务主管</div>
                 <div class="work_ul_flex">
-                    <div class="work_ul_name">工作经验</div>
-                    <div class="work_ul_word">3-5年</div>
+                    <div class="work_ul_name">订单金额</div>
+                    <div class="work_ul_word">{$item.price}元</div>
                 </div>
                 <div class="work_ul_flex">
-                    <div class="work_ul_name">工资待遇</div>
-                    <div class="work_ul_word">10000-20000</div>
+                    <div class="work_ul_name">购买日期</div>
+                    <div class="work_ul_word">{:date('Y-m-d', $item.createtime)}</div>
                 </div>
                 <div class="work_ul_flex">
-                    <div class="work_ul_name">公司名称</div>
-                    <div class="work_ul_word">北京好待遇有限公司</div>
+                    <div class="work_ul_name">订单编号</div>
+                    <div class="work_ul_word">{$item.order_sn}</div>
                 </div>
-                <div class="work_ul_btn ac"><button class="common_btn">播放</button></div>
+                <div class="work_ul_btn ac"><button class="common_btn" onclick="window.location='{:url('index/study/videodetail', array('id'=>$item.video_id))}'">播放</button></div>
             </li>
-            <li>
-                <div class="work_ul_title"><img src="/statics//images/icons/kecheng.png"> 法务主管</div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工作经验</div>
-                    <div class="work_ul_word">3-5年</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工资待遇</div>
-                    <div class="work_ul_word">10000-20000</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">公司名称</div>
-                    <div class="work_ul_word">北京好待遇有限公司</div>
-                </div>
-                <div class="work_ul_btn ac"><button class="common_btn">播放</button></div>
-            </li>
-            <li>
-                <div class="work_ul_title"><img src="/statics//images/icons/kecheng.png"> 法务主管</div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工作经验</div>
-                    <div class="work_ul_word">3-5年</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工资待遇</div>
-                    <div class="work_ul_word">10000-20000</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">公司名称</div>
-                    <div class="work_ul_word">北京好待遇有限公司</div>
-                </div>
-                <div class="work_ul_btn ac"><button class="common_btn">播放</button></div>
-            </li>
-            <li>
-                <div class="work_ul_title"><img src="/statics//images/icons/kecheng.png"> 法务主管</div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工作经验</div>
-                    <div class="work_ul_word">3-5年</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">工资待遇</div>
-                    <div class="work_ul_word">10000-20000</div>
-                </div>
-                <div class="work_ul_flex">
-                    <div class="work_ul_name">公司名称</div>
-                    <div class="work_ul_word">北京好待遇有限公司</div>
-                </div>
-                <div class="work_ul_btn ac"><button class="common_btn">播放</button></div>
-            </li>
+            {/foreach}
         </ul>
     </div>
 
