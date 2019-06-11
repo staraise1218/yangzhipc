@@ -24,6 +24,13 @@ class Ad extends Model
 
     
 
+    
+    public function adPosition()
+    {
+        return $this->belongsTo('AdPosition', 'ad_position_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+    
+
 
 
 

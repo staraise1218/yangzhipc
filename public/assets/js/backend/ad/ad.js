@@ -25,7 +25,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'ad_position_id', title: __('Ad_position_id')},
+                        {field: 'ad_position.name', title: __('Ad_position_id')},
                         {field: 'title', title: __('Title')},
                         {field: 'image', title: __('Image'), formatter: Table.api.formatter.image},
                         {field: 'link', title: __('Link')},
