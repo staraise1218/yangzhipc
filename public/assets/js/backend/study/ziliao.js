@@ -29,7 +29,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'title', title: __('Title')},
                         {field: 'price', title: __('Price'), operate:'BETWEEN'},
                         {field: 'thumbimage', title: __('Thumbimage'), formatter: Table.api.formatter.image},
-                        {field: 'videofile', title: __('Videofile')},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'upadatetime', title: __('Upadatetime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'is_delete', title: __('Is_delete')},
