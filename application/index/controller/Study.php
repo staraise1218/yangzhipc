@@ -148,7 +148,7 @@ class Study extends Frontend
             ->where($where)
             ->field('id, title, thumbimage')
             ->order('id desc')
-            ->paginate(1, false, ['query'=>request()->param()]);
+            ->paginate(6, false, ['query'=>request()->param()]);
 
         $this->assign('list', $list);
         $this->assign('category_id', $category_id);

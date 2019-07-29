@@ -130,6 +130,13 @@ class User extends Frontend
             if (!$result) {
                 $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
             }
+            // 检测验证码
+            $code = $this->request->post('code');
+            if (!\app\common\library\Sms::check($mobile, $code, 'register'))
+            {
+                $this->error(__('验证码不正确'));
+            }
+
             if ($this->auth->register($mobile, $password)) {
                 $synchtml = '';
                 ////////////////同步到Ucenter////////////////

@@ -319,11 +319,11 @@ class User extends Api
             {
                 $this->error(__('手机号未注册！'));
             }
-            // $ret = Sms::check($mobile, $code, 'resetpwd');
-            // if (!$ret)
-            // {
-            //     $this->error(__('Captcha is incorrect'));
-            // }
+            $ret = Sms::check($mobile, $code, 'resetpwd');
+            if (!$ret)
+            {
+                $this->error(__('Captcha is incorrect'));
+            }
             Sms::flush($mobile, 'resetpwd');
         }
         else

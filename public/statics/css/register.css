@@ -154,7 +154,7 @@
 	display: inline-block;
 }
 .in-item-cap .in-item-cap-inp{
-	width: 200px;
+	width: 180px;
 	border: none;
 	outline: none;  
 	height: 42px;
@@ -164,7 +164,7 @@
 .in-item-cap span{
 	text-indent: 15px;
 	line-height: 30px;
-	width: 90px;
+	width: 110px;
 	font-size:12px;
 	font-family:MicrosoftYaHei;
 	font-weight:400;
@@ -179,13 +179,7 @@
 	text-indent: 80px;
 	line-height: 30px;	
 }
+.sendCode {
+	cursor: pointer;
+}
 /*forget*/
-
-
-
-
-
-
-
-
-
