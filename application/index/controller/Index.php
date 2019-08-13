@@ -22,7 +22,7 @@ class Index extends Frontend
     {
         $adList = Db::name('ad')
             ->where('ad_position_id', 'in', [1, 3])
-            ->field('title, image, link')
+            ->field('ad_position_id, title, image, link')
             ->select();
 
         foreach ($adList as $item) {
