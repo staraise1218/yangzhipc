@@ -129,12 +129,9 @@
             </div>
             <!-- 内容 -->
             <div class="index_partner_content">
-                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
-                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
-                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
-                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
-                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
-                <img src="/uploads/20181205/9ae6c7174f7d55c5710492b80a11a35c.png" alt="">
+                {foreach name="parterList" item="item"}
+                <img src="{$item.image}" alt="{$item.title}">
+                {/foreach}
             </div>
         </div>
     </div>
