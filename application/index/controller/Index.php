@@ -25,6 +25,7 @@ class Index extends Frontend
             ->field('ad_position_id, title, image, link')
             ->select();
 
+        $bannerList = $parterList = array();
         foreach ($adList as $item) {
             // 轮播图
             if($item['ad_position_id'] == 1) $bannerList[] = $item;
