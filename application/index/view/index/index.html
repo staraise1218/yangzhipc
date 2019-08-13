@@ -25,13 +25,13 @@
     <div id="myCarousel" class="carousel slide">
         <!-- 轮播（Carousel）指标 -->
         <ol class="carousel-indicators">
-            {foreach name="adList" item="item" key="k"}
+            {foreach name="bannerList" item="item" key="k"}
             <li data-target="#myCarousel" data-slide-to="{$k}" {$k==0 ? ' class="active"' : ''}></li>
             {/foreach}
         </ol>   
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
-            {foreach name="adList" item="item" key="k"}
+            {foreach name="bannerList" item="item" key="k"}
             <div class="item {$k == 0 ? 'active' : ''}">
                 <a href="{$item.link ? $item.link : 'javascript:;'}"><img src="{$item.image}" alt="{$item.title}"></a>
             </div>
