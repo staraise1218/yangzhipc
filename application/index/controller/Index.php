@@ -33,12 +33,12 @@ class Index extends Frontend
             if($item['ad_position_id'] == 3) $parterList[] = $item;
         }
 
-        // 行业知识
+        // 行业资讯
         $knowledge = Db::name('knowledge')->order('id desc')->limit(5)->select();
         // 热门项目
         $project = Db::name('project')->where('is_delete', 0)->order('id desc')->limit(5)->select();
-         // 行业知识
-        $exhibition = Db::name('exhibition')->order('id desc')->limit(5)->select();
+        /* // 行业知识
+        $exhibition = Db::name('exhibition')->order('id desc')->limit(5)->select();*/
         // 
 
         $this->assign('bannerList', $bannerList);
