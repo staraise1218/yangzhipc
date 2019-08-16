@@ -116,3 +116,7 @@
 .index_partner_container {width: 480px;}
 .index_partner_content {width: 480px; overflow: hidden;}
 .index_partner_content img {width: 150px; margin-top: 20px; float: left; margin-right: 10px;}
+
+.index_article {margin-bottom: 10px;}
+.index_article .thumbImg { width: 30% }
+.index_article .desc { width: 66%; margin-top: 10px;}

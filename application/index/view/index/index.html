@@ -60,23 +60,25 @@
             </div>
             <!-- 内容 -->
             <div class="index_content">
-                <div class="index_position index_flex">
-                    <div class="index_l"><img src="{$project[0]['thumbimage']}"></div>
-                    <div class="index_r">
-                        <div><a class="index_content_title" href="{:url('index/project/detail', array('id'=>$project[0]['id']))}">{$project[0]['title']}</a></div>
+                {foreach name="project" item="item" key="k"}
+                <div class="index_position index_flex index_article">
+                    <div class="index_l thumbImg"><img src="{$project[0]['thumbimage']}"></div>
+                    <div class="index_r desc">
+                        <div><a class="index_content_title" href="{:url('index/project/detail', array('id'=>$item['id']))}">{$item.title}</a></div>
                         <div class="index_content_div index_small">
-                            {$project[0]['description']}
+                            {:mb_substr($item.description, 0, 20)}
                         </div>
-                        <div class="index_content_date index_small">{:date('Y-m-d', $project[0]['createtime'])}</div>
+                        <div class="index_content_date index_small">{:date('Y-m-d', $item.createtime)}</div>
                     </div>
                 </div>
-                <ul class="index_content_ul">
+                {/foreach}
+                <!-- <ul class="index_content_ul">
                     {foreach name="project" item="item" key="k"}
                     <?php if($k<1){continue;}?>
                     <li><a class="over" href="{:url('index/project/detail', array('id'=>$item['id']))}">{$item.title}</a> <span class="index_small">{:date('Y-m-d', $item.createtime)}</span></li>
                     {/foreach}
-
-                </ul>
+                
+                </ul> -->
             </div>
 
 
@@ -88,23 +90,18 @@
             </div>
             <!-- 内容 -->
             <div class="index_content">
-                <div class="index_position index_flex">
-                    <div class="index_l"><img src="{$knowledge[0]['thumbimage']}"></div>
-                    <div class="index_r">
-                        <div><a class="index_content_title" href="{:url('index/study/knowledgedetail', array('id'=>$knowledge[0]['id']))}">{$knowledge[0]['title']}</a></div>
+                {foreach name="knowledge" item="item" key="k"}
+                <div class="index_position index_flex index_article">
+                    <div class="index_l thumbImg"><img src="{$item.thumbimage}"></div>
+                    <div class="index_r desc">
+                        <div><a class="index_content_title" href="{:url('index/project/detail', array('id'=>$item['id']))}">{$item.title}</a></div>
                         <div class="index_content_div index_small">
-                            {$knowledge[0]['description']}
+                            {:mb_substr($item.description, 0, 20)}
                         </div>
-                        <div class="index_content_date index_small">{:date('Y-m-d', $knowledge[0]['createtime'])}</div>
+                        <div class="index_content_date index_small">{:date('Y-m-d', $item.createtime)}</div>
                     </div>
                 </div>
-                <ul class="index_content_ul">
-                    {foreach name="knowledge" item="item" key="k"}
-                    <?php if($k<1){continue;}?>
-                    <li><a class="over" href="{:url('index/study/knowledgedetail', array('id'=>$item['id']))}">{$item.title}</a> <span class="index_small">{:date('Y-m-d', $item.createtime)}</span></li>
-                    {/foreach}
-
-                </ul>
+                {/foreach}
             </div>
         </div>
 
