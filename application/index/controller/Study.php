@@ -19,22 +19,13 @@ class Study extends Frontend
     }
 
     public function index(){
-    	// 轮播图
-    	$adList = Db::name('ad')
-            ->where('ad_position_id', 1)
-            ->field('title, image, link')
-            ->select();
-
-        
-
-
-        // 项目列表
+    	
+         // 项目列表
     	$now_month = date('Ym');
     	$pre_month = date('Ym', strtotime('-1 month'));
     	$nowMonthProjectList = $this->getMonthProject($now_month);
     	$preMonthProjectList = $this->getMonthProject($pre_month);
 
-    	$this->assign('adList', $adList);
     	$this->assign('now_month', $now_month);
     	$this->assign('pre_month', $pre_month);
     	$this->assign('nowMonthProjectList', $nowMonthProjectList);

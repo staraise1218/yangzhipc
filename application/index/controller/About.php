@@ -19,10 +19,17 @@ class About extends Frontend
     }
 
     public function index(){
+        // 轮播图
+        $bannerList = Db::name('ad')
+            ->where('ad_position_id', 1)
+            ->field('title, image, link')
+            ->select();
+
         $info = Db::name('page')
             ->where('id', 5)
             ->find();
 
+        $this->assign('bannerList', $bannerList);
         $this->assign('info', $info);
         return $this->fetch();
     }

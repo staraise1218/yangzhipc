@@ -4,7 +4,8 @@
             <li {if condition="CONTROLLER_NAME eq 'Index'"}class="header_ul_act"{/if}><a href="/">首页</a></li>
             <li {if condition="CONTROLLER_NAME eq 'About'"}class="header_ul_act"{/if}><a href="{:url('index/about/index')}">关于我们</a></li>
             <li {if condition="CONTROLLER_NAME eq 'Project'"}class="header_ul_act"{/if}>
-                <a href="{:url('index/project/index')}">项目与服务</a>
+                <!-- <a href="{:url('index/project/index')}">项目与服务</a> -->
+                <a href="javascript:;">项目与服务</a>
                 <ul class="header_ul_sel">
                     <!-- <li><a href="{:url('index/project/index')}">培训项目</a></li> -->
                     <li><a href="{:url('index/project/page', array('id'=>2))}">专业培训</a></li>
@@ -23,7 +24,7 @@
                 </ul>
             </li>
             <li {if condition="CONTROLLER_NAME eq 'Resource'"}class="header_ul_act"{/if}>
-                <a href="{:url('index/resource/exhibition')}">资源中心</a>
+                <a href="javascript:;">资源中心</a>
                 <ul class="header_ul_sel">
                     <li><a href="{:url('index/resource/exhibition')}">行业会展</a></li>
                     <li><a href="{:url('index/resource/link')}">重要链接</a></li>
