@@ -34,18 +34,18 @@ class Index extends Frontend
         }
 
         // 行业资讯
-        $knowledge = Db::name('knowledge')->order('id desc')->limit(5)->select();
+        $knowledge = Db::name('knowledge')->order('id desc')->limit(3)->select();
         // 热门项目
-        $project = Db::name('project')->where('is_delete', 0)->order('id desc')->limit(5)->select();
-        /* // 行业知识
-        $exhibition = Db::name('exhibition')->order('id desc')->limit(5)->select();*/
+        $project = Db::name('project')->where('is_delete', 0)->order('id desc')->limit(3)->select();
+         // 行业知识
+        $exhibition = Db::name('exhibition')->order('id desc')->limit(3)->select();
         // 
 
         $this->assign('bannerList', $bannerList);
         $this->assign('parterList', $parterList);
         $this->assign('knowledge', $knowledge);
         $this->assign('project', $project);
-        $this->assign('exhibition', $exhibition);
+        // $this->assign('exhibition', $exhibition);
         return $this->view->fetch();
     }
 
