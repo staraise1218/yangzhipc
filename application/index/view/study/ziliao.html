@@ -43,7 +43,7 @@
 			{foreach name="list" item="item"}
 			<li>
 				<a href="{:url('index/study/ziliaoDetail', array('id'=>$item.id))}"><img class="study_ul_img" src="{$item.thumbimage}" width="226" height="162"></a>
-				<a href="{:url('index/study/ziliaoDetail', array('id'=>$item.id))}"><img class="study_ul_start" src="/statics/images/icons/start.png"></a>
+				<!-- <a href="{:url('index/study/ziliaoDetail', array('id'=>$item.id))}"><img class="study_ul_start" src="/statics/images/icons/start.png"></a> -->
 				<p  class="study_ul_p" title="{$item.title}"><a href="{:url('index/study/ziliaoDetail', array('id'=>$item.id))}">{:mb_substr($item.title, 0, 22)}</a></p>
 			</li>
 			{/foreach}
@@ -61,6 +61,7 @@
 		  //常规用法
 		laydate.render({
 		   	elem: '#time',
+		   	type： 'year',
 		   	done: function(value, date){
       			var category_id = $('select[name=category_id]').val();
       			var time = value;

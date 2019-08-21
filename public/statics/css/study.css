@@ -51,6 +51,10 @@
 	text-align: center;
 }
 
+.study_ul li a {
+	display: inline-block;
+}
+
 .study_ul_img{
 	width: 100%;
 }
@@ -61,6 +65,6 @@
 }
 
 .study_ul_p{
-	margin-top: -40px;
-	margin-bottom: 30px;
+	padding: 20px 0;
+
 }
