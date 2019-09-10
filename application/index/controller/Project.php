@@ -19,8 +19,26 @@ class Project extends Frontend
     }
 
     public function index(){
-    	// 轮播图
-    	$adList = Db::name('ad')
+        // 轮播图
+        $adList = Db::name('ad')
+            ->where('ad_position_id', 1)
+            ->field('title, image, link')
+            ->select();
+
+        $list = Db::name('project')
+            ->where('is_delete', 0)
+            ->field('id, title, description, createtime')
+            ->order('id desc')
+            ->paginate(9);
+
+        $this->assign('adList', $adList);
+        $this->assign('list', $list);
+        return $this->fetch();
+    }
+
+    /*public function index(){
+        // 轮播图
+        $adList = Db::name('ad')
             ->where('ad_position_id', 1)
             ->field('title, image, link')
             ->select();
@@ -29,18 +47,18 @@ class Project extends Frontend
 
 
         // 项目列表
-    	$now_month = date('Ym');
-    	$pre_month = date('Ym', strtotime('-1 month'));
-    	$nowMonthProjectList = $this->getMonthProject($now_month);
-    	$preMonthProjectList = $this->getMonthProject($pre_month);
+        $now_month = date('Ym');
+        $pre_month = date('Ym', strtotime('-1 month'));
+        $nowMonthProjectList = $this->getMonthProject($now_month);
+        $preMonthProjectList = $this->getMonthProject($pre_month);
 
-    	$this->assign('adList', $adList);
-    	$this->assign('now_month', $now_month);
-    	$this->assign('pre_month', $pre_month);
-    	$this->assign('nowMonthProjectList', $nowMonthProjectList);
-    	$this->assign('preMonthProjectList', $preMonthProjectList);
-    	return $this->fetch();
-    }
+        $this->assign('adList', $adList);
+        $this->assign('now_month', $now_month);
+        $this->assign('pre_month', $pre_month);
+        $this->assign('nowMonthProjectList', $nowMonthProjectList);
+        $this->assign('preMonthProjectList', $preMonthProjectList);
+        return $this->fetch();
+    }*/
 
     public function detail(){
     	$id = input('id');

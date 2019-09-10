@@ -43,54 +43,30 @@
     </div> 
 	<!-- 中间主要内容 -->
 	<div class="main">
-		<h3 class="more_title">培训项目</h3>
+		<h3 class="more_title">专业培训</h3>
 		<div class="project">
-			<!-- 标题 -->
-			<div class="project_title project_flex">
-				<div class="project_l">{:substr($now_month, 0, 4)}年{:substr($now_month, 4)}月</div>
-				<a href="{:url('index/project/all')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
-			</div>
 
 			<ul class="project_ul">
-				{foreach name="nowMonthProjectList" item="nowMonthProject"}
+				{foreach name="list" item="item"}
 				<li>
-					<a href="{:url('index/project/detail', array('id'=>$nowMonthProject.id))}">
+					<a href="{:url('index/project/detail', array('id'=>$item.id))}">
 						<div class="project_item_l">
-							<div class="project_big">{:date('d', $nowMonthProject['createtime'])}</div>
-							<div class="project_small">{:date('Y-m', $nowMonthProject['createtime'])}</div>
+							<div class="project_big">{:date('d', $item['createtime'])}</div>
+							<div class="project_small">{:date('Y-m', $item['createtime'])}</div>
 						</div>
 						<div class="project_item_r">
-							<div class="project_item_title">{$nowMonthProject.title}</div>
-							<div class="project_item_word">{$nowMonthProject.description}</div>
+							<div class="project_item_title">{$item.title}</div>
+							<div class="project_item_word">{$item.description}</div>
 						</div>
 					</a>
 				</li>
 				{/foreach}
 			</ul>
-		</div>
-		<div class="project">
-			<!-- 标题 -->
-			<div class="project_title project_flex">
-				<div class="project_l">{:substr($pre_month, 0, 4)}年{:substr($pre_month, 4)}月</div>
-				<a href="{:url('index/project/all')}" class="index_title_r">更多 <img class="index_img" src="/statics/images/icons/you.png"></a>
+			<div class="more_r_bottom ac">
+				<ul class="pagination">
+				   <!-- {$list->render()} -->
+				</ul>
 			</div>
-
-			<ul class="project_ul">
-				{foreach name="preMonthProjectList" item="preMonthProject"}
-				<li>
-					<a href="{:url('index/project/detail', array('id'=>$preMonthProject.id))}">
-						<div class="project_item_l">
-							<div class="project_big">{:date('d', $preMonthProject['createtime'])}</div>
-							<div class="project_small">{:date('Y-m', $preMonthProject['createtime'])}</div>
-						</div>
-						<div class="project_item_r">
-							<div class="project_item_title">{$preMonthProject.title}</div>
-							<div class="project_item_word">{$preMonthProject.description}</div>
-						</div>
-					</a>
-				</li>
-				{/foreach}
-			</ul>
 		</div>
 	</div>
 
