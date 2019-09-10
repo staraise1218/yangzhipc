@@ -125,8 +125,8 @@ class Study extends Frontend
         $where = array();
         if($category_id) $where['category_id'] = $category_id;
         if($time){
-            $start_time = strtotime($time);
-            $end_time = $start_time + 3600*24-1;
+            $start_time = strtotime($time.'-'.'01'.'-'.'01');
+            $end_time = strtotime($time.'-'.'12'.'-'.'30');
             $where['createtime'] = array('between', "$start_time, $end_time");
         }
 
@@ -182,8 +182,8 @@ class Study extends Frontend
         $where = array();
         if($category_id) $where['category_id'] = $category_id;
         if($time){
-            $start_time = strtotime($time);
-            $end_time = $start_time + 3600*24-1;
+            $start_time = strtotime($time.'-'.'01'.'-'.'01');
+            $end_time = strtotime($time.'-'.'12'.'-'.'30');
             $where['createtime'] = array('between', "$start_time, $end_time");
         }
 
