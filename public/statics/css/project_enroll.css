@@ -3,12 +3,12 @@
 }
 
 .enroll_ul li{
-	margin-bottom: 30px;
+	margin-bottom: 14px;
 	font-size:16px;
 }
 
 .enroll_ul_name{
-	width: 160px;
+	width: 90px;
 	display: inline-block;
 	color:rgba(77,77,77,1);
 }
